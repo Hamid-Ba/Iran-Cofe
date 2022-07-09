@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1703.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6CFF5E66-05AD-48B9-A372-EFB1CF737270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IranCafe.Domain", "src\IranCafe.Domain\IranCafe.Domain.csproj", "{D77D7DAF-30CF-4136-8815-1920BCFDBDC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IranCafe.Application", "src\IranCafe.Application\IranCafe.Application.csproj", "{70F4CB22-B082-4B98-95AA-EEBB776A7868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IranCafe.Application.Contract", "src\IranCafe.Application.Contract\IranCafe.Application.Contract.csproj", "{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IranCafe.Infrastructure.EfCore", "src\IranCafe.Infrastructure.EfCore\IranCafe.Infrastructure.EfCore.csproj", "{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IranCafe.Infrastructure.Configuration", "src\IranCafe.Infrastructure.Configuration\IranCafe.Infrastructure.Configuration.csproj", "{D1370F4D-86BB-4A9C-BCBA-56122655C574}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D77D7DAF-30CF-4136-8815-1920BCFDBDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77D7DAF-30CF-4136-8815-1920BCFDBDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77D7DAF-30CF-4136-8815-1920BCFDBDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77D7DAF-30CF-4136-8815-1920BCFDBDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F4CB22-B082-4B98-95AA-EEBB776A7868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F4CB22-B082-4B98-95AA-EEBB776A7868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F4CB22-B082-4B98-95AA-EEBB776A7868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F4CB22-B082-4B98-95AA-EEBB776A7868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1370F4D-86BB-4A9C-BCBA-56122655C574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1370F4D-86BB-4A9C-BCBA-56122655C574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1370F4D-86BB-4A9C-BCBA-56122655C574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1370F4D-86BB-4A9C-BCBA-56122655C574}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FEDD3B9-E5B1-42FF-A4FF-B47597C246FF}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D77D7DAF-30CF-4136-8815-1920BCFDBDC9} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
+		{70F4CB22-B082-4B98-95AA-EEBB776A7868} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
+		{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
+		{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
+		{D1370F4D-86BB-4A9C-BCBA-56122655C574} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
+	EndGlobalSection
+EndGlobal
