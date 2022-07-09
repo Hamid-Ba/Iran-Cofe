@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="UserAgg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserAgg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IranCafe.Application.Contract\IranCafe.Application.Contract.csproj" />
+    <ProjectReference Include="..\IranCafe.Domain\IranCafe.Domain.csproj" />
+  </ItemGroup>
 </Project>

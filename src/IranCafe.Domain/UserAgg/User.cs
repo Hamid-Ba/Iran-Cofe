@@ -14,6 +14,8 @@ namespace IranCafe.Domain.UserAgg
 
         public User(string phone, string phoneCode, string fullName, string email)
         {
+            Guard(phone);
+
             Phone = phone;
             PhoneCode = phoneCode;
             FullName = fullName;
@@ -39,5 +41,6 @@ namespace IranCafe.Domain.UserAgg
 
         public void ChangePhoneCode(string newPhoneCode) => PhoneCode = newPhoneCode;
 
+        private void Guard(string phone) { if (string.IsNullOrWhiteSpace(phone)) throw new Exception("Phone Can Not Be Null Or Empty"); }
     }
 }
