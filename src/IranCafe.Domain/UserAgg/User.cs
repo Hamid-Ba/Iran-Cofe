@@ -9,6 +9,7 @@ namespace IranCafe.Domain.UserAgg
         public string FullName { get; private set; }
         public string Email { get; private set; }
         public bool IsActive { get; private set; }
+        public DateTime LoginExpireDate { get;private set; }
 
         public User() { }
 
@@ -20,6 +21,7 @@ namespace IranCafe.Domain.UserAgg
             PhoneCode = phoneCode;
             FullName = fullName;
             Email = email;
+            IsActive = false;
         }
 
         public static User Register(string phone, string phoneCode) => new(phone, phoneCode, "", "");
@@ -38,6 +40,8 @@ namespace IranCafe.Domain.UserAgg
             IsActive = isActive;
             LastUpdateDate = DateTime.Now;
         }
+
+        public void SetAccessToLoginDate(DateTime accessTime) => LoginExpireDate = accessTime;
 
         public void ChangePhoneCode(string newPhoneCode) => PhoneCode = newPhoneCode;
 

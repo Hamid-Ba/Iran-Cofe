@@ -7,6 +7,7 @@
         public string? FullName { get; set; }
         public string? Email { get; set; }
         public bool IsActive { get; set; }
+        public DateTime LoginExpireDate { get; set; }
     }
 
     public class RegisterUserDto
@@ -17,5 +18,10 @@
     public class LoginUserDto : RegisterUserDto
     {
         
+    }
+
+    public class AccessTokenDto : RegisterUserDto
+    {
+        public string? Token { get; set; }
     }
 }
