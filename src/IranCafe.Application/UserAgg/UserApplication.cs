@@ -1,5 +1,6 @@
 ﻿using Framework.Api.Jwt;
 using Framework.Application;
+using Framework.Application.Sms;
 using IranCafe.Application.Contract.UserAgg;
 using IranCafe.Domain.UserAgg;
 
@@ -8,11 +9,13 @@ namespace IranCafe.Application.UserAgg
     public class UserApplication : IUserApplication
     {
         private readonly IJwtHelper _jwtHelper;
+        private readonly ISmsService _smsService;
         private readonly IUserRepository _userRepository;
 
-        public UserApplication(IJwtHelper jwtHelper, IUserRepository userRepository)
+        public UserApplication(IJwtHelper jwtHelper,ISmsService smsService, IUserRepository userRepository)
         {
             _jwtHelper = jwtHelper;
+            _smsService = smsService;
             _userRepository = userRepository;
         }
 
@@ -29,6 +32,9 @@ namespace IranCafe.Application.UserAgg
             var phoneCode = Guid.NewGuid().ToString().Substring(0, 6);
 
             //ToDo : Send Phone Code
+            var smsMessage = $"کاربر گرامی با شماره موبایل {command.Phone},\nکد تایید شما : {phoneCode} می باشد";
+            _smsService.SendSms(command.Phone!, smsMessage);
+
             user.ChangePhoneCode(phoneCode);
             await _userRepository.SaveChangesAsync();
 
@@ -45,6 +51,8 @@ namespace IranCafe.Application.UserAgg
             var user = User.Register(command.Phone!, phoneCode);
 
             //ToDo : Send Phone Code
+            var smsMessage = $"کاربر گرامی با شماره موبایل {command.Phone},\nکد تایید شما : {phoneCode} می باشد";
+            _smsService.SendSms(command.Phone!, smsMessage);
 
             await _userRepository.AddEntityAsync(user);
             await _userRepository.SaveChangesAsync();
