@@ -14,6 +14,8 @@
     <None Remove="Api\" />
     <None Remove="Api\Jwt\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Application\Sms\" />
+    <None Remove="kavenegar" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
@@ -21,9 +23,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
+    <PackageReference Include="kavenegar" Version="1.2.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Api\" />
     <Folder Include="Api\Jwt\" />
+    <Folder Include="Application\Sms\" />
   </ItemGroup>
 </Project>
