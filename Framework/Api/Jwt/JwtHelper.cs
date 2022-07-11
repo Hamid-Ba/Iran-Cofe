@@ -23,7 +23,7 @@ namespace Framework.Api.Jwt
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, command.Id.ToString()),
-                    new Claim(ClaimTypes.Name, command.FullName),
+                    new Claim(ClaimTypes.Name, command.FullName!),
                     new Claim(ClaimTypes.Expired, command.LoginExpireDate.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(10),

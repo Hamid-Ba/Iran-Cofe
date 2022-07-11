@@ -79,19 +79,12 @@ namespace IranCafe.Application.UserAgg
 
             var user = await _userRepository.GetBy(command.Phone!);
             if (user.PhoneCode != command.Token) return (result.Failed(ApplicationMessage.InvalidAccessToken), "");
+
             user.ControlActivation(isActive:true);
+            user.SetAccessToLoginDate(DateTime.Now.AddMinutes(5));
+            await _userRepository.SaveChangesAsync();
 
-            var loginDto = new JwtDto
-            {
-                Id = user.Id,
-                FullName = user.FullName,
-                PhoneCode = user.PhoneCode,
-                LoginExpireDate = user.LoginExpireDate
-            };
-
-            var token = _jwtHelper.SignIn(loginDto);
-            return (result.Succeeded(), token);
-
+            return await LoginSecondStep(command);
         }
     }
 }
