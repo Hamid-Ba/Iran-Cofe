@@ -7,6 +7,7 @@ namespace IranCafe.Domain.CafeAgg
 	{
         public Guid OwnerId { get;private set; }
         public string UniqueCode { get;private set; }
+        public string QRCode { get;private set; }
         public string EnTitle { get;private set; }
         public string FaTitle { get;private set; }
         public string Slug { get;private set; }
