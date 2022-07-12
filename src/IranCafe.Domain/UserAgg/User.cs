@@ -1,15 +1,19 @@
 ﻿using Framework.Domain;
+using IranCafe.Domain.CafeAgg;
 
 namespace IranCafe.Domain.UserAgg
 {
     public class User : EntityBase
     {
+        public Guid CafeId { get;private set; }
         public string? Phone { get; private set; }
         public string? PhoneCode { get; private set; }
         public string? FullName { get; private set; }
         public string? Email { get; private set; }
         public bool IsActive { get; private set; }
         public DateTime LoginExpireDate { get;private set; }
+
+        public Cafe? Cafe { get;private set; }
 
         public User() { }
 
@@ -39,6 +43,14 @@ namespace IranCafe.Domain.UserAgg
         {
             IsActive = isActive;
             LastUpdateDate = DateTime.Now;
+        }
+
+        public Guid RegisterCafe(Guid cafeId)
+        {
+            CafeId = cafeId;
+            LastUpdateDate = DateTime.Now;
+
+            return CafeId;
         }
 
         public void SetAccessToLoginDate(DateTime accessTime) => LoginExpireDate = accessTime;

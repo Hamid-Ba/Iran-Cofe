@@ -27,7 +27,7 @@ namespace IranCafe.Domain.CafeAgg
         public string? StatusDesc { get;private set; }
         public CafeType Type { get;private set; }
 
-        public City City { get;private set; }
+        public City? City { get;private set; }
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get;private set; }
 

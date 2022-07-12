@@ -6,7 +6,7 @@ namespace IranCafe.Domain.SiteEntities
     {
         public string? Title { get; private set; }
 
-        public List<City> Cities { get; private set; }
+        public List<City>? Cities { get; private set; }
 
         public Province(string? title) => Title = title;
 
