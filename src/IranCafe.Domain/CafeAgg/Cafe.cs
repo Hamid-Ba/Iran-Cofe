@@ -1,11 +1,14 @@
 ﻿using Framework.Domain;
 using Framework.Domain.Cafe;
+using IranCafe.Domain.SiteEntities;
+using IranCafe.Domain.UserAgg;
 
 namespace IranCafe.Domain.CafeAgg
 {
     public class Cafe : EntityBase
 	{
         public Guid OwnerId { get;private set; }
+        public Guid ProvinceId { get;private set; }
         public string? UniqueCode { get;private set; }
         public string? QRCode { get;private set; }
         public string? EnTitle { get;private set; }
@@ -19,13 +22,59 @@ namespace IranCafe.Domain.CafeAgg
         public string? PostalCode { get;private set; }
         public string? ShortDesc { get;private set; }
         public string? Desc { get;private set; }
-        public bool IsActive { get;private set; }
         public string? GoogleMapUrl { get;private set; }
         public CafeStatus Status { get;private set; }
         public string? StatusDesc { get;private set; }
         public CafeType Type { get;private set; }
 
-        //List Of Users
-        //List Of MenuItems
+        public Province Province { get;private set; }
+        public List<User>? Users { get; private set; }
+        public List<MenuItem>? Items { get;private set; }
+
+        public Cafe(Guid ownerId,Guid provinceId,CafeType type,string uniqueCode,string enTitle,string faTitle,string slug,string phone,string postalCode)
+        {
+            OwnerId = ownerId;
+            ProvinceId = provinceId;
+            Type = type;
+            UniqueCode = uniqueCode;
+            EnTitle = enTitle;
+            FaTitle = faTitle;
+            Slug = slug;
+            Phone = phone;
+            PostalCode = postalCode;
+        }
+
+        public void Edit(Guid ownerId, Guid provinceId, string? enTitle, string? faTitle, string? slug,
+            string? phone, string? email, string? instagramId, string? telegramId, string? street, string? postalCode,string? shortDesc,
+            string? desc, string? googleMapUrl, CafeType type)
+        {
+            OwnerId = ownerId;
+            ProvinceId = provinceId;
+            
+            EnTitle = enTitle;
+            FaTitle = faTitle;
+            Slug = slug;
+            Phone = phone;
+            Email = email;
+            InstagramId = instagramId;
+            TelegramId = telegramId;
+            Street = street;
+            PostalCode = postalCode;
+            ShortDesc = shortDesc;
+            Desc = desc;
+
+            GoogleMapUrl = googleMapUrl;
+            
+            Type = type;
+        }
+
+        public void ChangeStatus(CafeStatus status, string reason)
+        {
+            Status = status;
+
+            if (!string.IsNullOrWhiteSpace(reason)) StatusDesc = reason;
+
+            LastUpdateDate = DateTime.Now;
+        }
     }
 }
