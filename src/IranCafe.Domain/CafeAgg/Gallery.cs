@@ -9,7 +9,14 @@ namespace IranCafe.Domain.CafeAgg
         public string? ImageName { get;private set; }
         public string? FolderPath { get;private set; }
 
-        //One Cofe
+        public Cafe? Cafe { get;private set; }
+
+        public Gallery(Guid cafeId, string? imageUrl, string? imageName, string? folderPath)
+        {
+            CafeId = cafeId;
+            ImageUrl = imageUrl;
+            ImageName = imageName;
+            FolderPath = folderPath;
+        }
     }
 }
-
