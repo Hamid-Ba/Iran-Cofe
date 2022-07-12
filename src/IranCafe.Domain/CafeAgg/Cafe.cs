@@ -26,5 +26,6 @@ namespace IranCafe.Domain.CafeAgg
         public CafeType Type { get;private set; }
 
         //List Of Users
+        //List Of MenuItems
     }
 }
