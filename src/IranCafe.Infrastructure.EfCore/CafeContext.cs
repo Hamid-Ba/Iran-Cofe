@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IranCafe.Domain.UserAgg;
+using IranCafe.Infrastructure.EfCore.Mapping.UserAgg;
+using Microsoft.EntityFrameworkCore;
 
 namespace IranCafe.Infrastructure.EfCore
 {
@@ -11,8 +13,14 @@ namespace IranCafe.Infrastructure.EfCore
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
                 relationship.DeleteBehavior = DeleteBehavior.Cascade;
 
-            //var assembly = typeof(OperatorMapping).Assembly;
-            //modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+            var assembly = typeof(UserMapping).Assembly;
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
         }
+
+        #region UserAgg
+
+        public DbSet<User> Users { get; set; }
+
+        #endregion
     }
 }

@@ -5,6 +5,6 @@
 		public Guid Id { get; set; }
 		public string? FullName { get; set; }
         public string? PhoneCode { get; set; }
-        public DateTime LoginExpireDate { get; set; }
+        public DateTime? LoginExpireDate { get; set; }
 	}
 }

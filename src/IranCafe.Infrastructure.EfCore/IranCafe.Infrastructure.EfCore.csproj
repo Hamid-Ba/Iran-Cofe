@@ -8,8 +8,21 @@
 
   <ItemGroup>
     <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Mapping\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\UserAgg\" />
+    <None Remove="Mapping\UserAgg\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\UserAgg\" />
+    <Folder Include="Mapping\UserAgg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IranCafe.Domain\IranCafe.Domain.csproj" />
   </ItemGroup>
 </Project>

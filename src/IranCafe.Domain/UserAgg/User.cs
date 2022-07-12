@@ -11,7 +11,7 @@ namespace IranCafe.Domain.UserAgg
         public string? FullName { get; private set; }
         public string? Email { get; private set; }
         public bool IsActive { get; private set; }
-        public DateTime LoginExpireDate { get;private set; }
+        public DateTime? LoginExpireDate { get;private set; }
 
         public Cafe? Cafe { get;private set; }
 
