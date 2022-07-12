@@ -4,10 +4,10 @@ namespace IranCafe.Domain.UserAgg
 {
     public class User : EntityBase
     {
-        public string Phone { get; private set; }
-        public string PhoneCode { get; private set; }
-        public string FullName { get; private set; }
-        public string Email { get; private set; }
+        public string? Phone { get; private set; }
+        public string? PhoneCode { get; private set; }
+        public string? FullName { get; private set; }
+        public string? Email { get; private set; }
         public bool IsActive { get; private set; }
         public DateTime LoginExpireDate { get;private set; }
 
