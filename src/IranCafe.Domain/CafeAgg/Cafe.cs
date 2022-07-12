@@ -8,7 +8,7 @@ namespace IranCafe.Domain.CafeAgg
     public class Cafe : EntityBase
 	{
         public Guid OwnerId { get;private set; }
-        public Guid ProvinceId { get;private set; }
+        public Guid CityId { get;private set; }
         public string? UniqueCode { get;private set; }
         public string? QRCode { get;private set; }
         public string? EnTitle { get;private set; }
@@ -27,29 +27,32 @@ namespace IranCafe.Domain.CafeAgg
         public string? StatusDesc { get;private set; }
         public CafeType Type { get;private set; }
 
-        public Province Province { get;private set; }
+        public City City { get;private set; }
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get;private set; }
 
-        public Cafe(Guid ownerId,Guid provinceId,CafeType type,string uniqueCode,string enTitle,string faTitle,string slug,string phone,string postalCode)
+        public Cafe(Guid ownerId,Guid cityId,CafeType type,string uniqueCode,string enTitle,string faTitle,string slug,string phone,string street
+            ,string shortDesc,string desc)
         {
             OwnerId = ownerId;
-            ProvinceId = provinceId;
+            CityId = cityId;
             Type = type;
             UniqueCode = uniqueCode;
             EnTitle = enTitle;
             FaTitle = faTitle;
             Slug = slug;
             Phone = phone;
-            PostalCode = postalCode;
+            Street = street;
+            ShortDesc = shortDesc;
+            Desc = desc;
         }
 
-        public void Edit(Guid ownerId, Guid provinceId, string? enTitle, string? faTitle, string? slug,
+        public void Edit(Guid ownerId, Guid cityId, string? enTitle, string? faTitle, string? slug,
             string? phone, string? email, string? instagramId, string? telegramId, string? street, string? postalCode,string? shortDesc,
             string? desc, string? googleMapUrl, CafeType type)
         {
             OwnerId = ownerId;
-            ProvinceId = provinceId;
+            CityId = cityId;
             
             EnTitle = enTitle;
             FaTitle = faTitle;

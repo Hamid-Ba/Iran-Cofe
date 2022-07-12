@@ -11,12 +11,14 @@
     <None Remove="CafeAgg\" />
     <None Remove="SiteEntities \" />
     <None Remove="CafeAgg\Contracts\" />
+    <None Remove="SiteEntities \Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\" />
     <Folder Include="CafeAgg\" />
     <Folder Include="SiteEntities \" />
     <Folder Include="CafeAgg\Contracts\" />
+    <Folder Include="SiteEntities \Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\Framework.csproj" />
