@@ -60,7 +60,7 @@ namespace IranCafe.Application.UserAgg
             return result.Succeeded();
         }
 
-        public async Task<(OperationResult, string)> LoginSecondStep(AccessTokenDto command)
+        public async Task<(OperationResult, string)> VerifyLoginRegister(AccessTokenDto command)
         {
             OperationResult result = new();
 
@@ -81,18 +81,18 @@ namespace IranCafe.Application.UserAgg
             return (result.Succeeded(), token);
         }
 
-        public async Task<(OperationResult, string)> VerifyRegister(AccessTokenDto command)
-        {
-            OperationResult result = new();
+        //public async Task<(OperationResult, string)> VerifyRegister(AccessTokenDto command)
+        //{
+        //    OperationResult result = new();
 
-            var user = await _userRepository.GetBy(command.Phone!);
-            if (user.PhoneCode != command.Token) return (result.Failed(ApplicationMessage.InvalidAccessToken), "");
+        //    var user = await _userRepository.GetBy(command.Phone!);
+        //    if (user.PhoneCode != command.Token) return (result.Failed(ApplicationMessage.InvalidAccessToken), "");
 
-            user.ControlActivation(isActive:true);
-            user.SetAccessToLoginDate(DateTime.Now.AddMinutes(5));
-            await _userRepository.SaveChangesAsync();
+        //    user.ControlActivation(isActive:true);
+        //    user.SetAccessToLoginDate(DateTime.Now.AddMinutes(5));
+        //    await _userRepository.SaveChangesAsync();
 
-            return await LoginSecondStep(command);
-        }
+        //    return await LoginSecondStep(command);
+        //}
     }
 }

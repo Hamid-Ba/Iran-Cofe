@@ -25,7 +25,7 @@ namespace IranCafe.Domain.UserAgg
             PhoneCode = phoneCode;
             FullName = fullName;
             Email = email;
-            IsActive = false;
+            IsActive = true;
         }
 
         public static User Register(string phone, string phoneCode) => new(phone, phoneCode, "", "");
