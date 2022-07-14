@@ -1,7 +1,9 @@
 ﻿using IranCafe.Application.Contract.UserAgg;
 using IranCafe.Application.UserAgg;
+using IranCafe.Domain.CafeAgg.Contracts;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore;
+using IranCafe.Infrastructure.EfCore.Repositories.CafeAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.UserAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +25,11 @@ namespace IranCafe.Infrastructure.Configuration
 
             #endregion
 
+            #region CafeAgg
+
+            service.AddTransient<ICafeRepository, CafeRepository>();
+
+            #endregion
 
 
         }
