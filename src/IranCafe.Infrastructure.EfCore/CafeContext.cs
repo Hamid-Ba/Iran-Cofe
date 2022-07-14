@@ -1,4 +1,5 @@
-﻿using IranCafe.Domain.UserAgg;
+﻿using IranCafe.Domain.CafeAgg;
+using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore.Mapping.UserAgg;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,12 @@ namespace IranCafe.Infrastructure.EfCore
         #region UserAgg
 
         public DbSet<User> Users { get; set; }
+
+        #endregion
+
+        #region CafeAgg
+
+        public DbSet<Cafe> Cafes { get; set; }
 
         #endregion
     }
