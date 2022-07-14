@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IranCafe.Infrastructure.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{294AC264-08C3-4EA8-BB27-5DF7497C2690}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost.Api", "src\ServiceHost.Api\ServiceHost.Api.csproj", "{0378D4A5-0815-4BB3-BD22-E0B1C48F9221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{294AC264-08C3-4EA8-BB27-5DF7497C2690}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{294AC264-08C3-4EA8-BB27-5DF7497C2690}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{294AC264-08C3-4EA8-BB27-5DF7497C2690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0378D4A5-0815-4BB3-BD22-E0B1C48F9221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0378D4A5-0815-4BB3-BD22-E0B1C48F9221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0378D4A5-0815-4BB3-BD22-E0B1C48F9221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0378D4A5-0815-4BB3-BD22-E0B1C48F9221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{2B761A28-9F43-4FCC-B3C5-4A77B8ADC35B} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
 		{2A8FBB4F-EF2A-46F2-9C1B-DC7E509E9498} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
 		{D1370F4D-86BB-4A9C-BCBA-56122655C574} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
+		{0378D4A5-0815-4BB3-BD22-E0B1C48F9221} = {6CFF5E66-05AD-48B9-A372-EFB1CF737270}
 	EndGlobalSection
 EndGlobal
