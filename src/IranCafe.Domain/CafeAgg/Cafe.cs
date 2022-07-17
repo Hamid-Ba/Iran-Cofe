@@ -25,6 +25,7 @@ namespace IranCafe.Domain.CafeAgg
         public string? GoogleMapUrl { get;private set; }
         public CafeStatus Status { get;private set; }
         public string? StatusDesc { get;private set; }
+        public int View { get;private set; }
         public CafeType Type { get;private set; }
 
         public City? City { get;private set; }
@@ -45,6 +46,7 @@ namespace IranCafe.Domain.CafeAgg
             Street = street;
             ShortDesc = shortDesc;
             Desc = desc;
+            View = 0;
         }
 
         public void Edit(Guid ownerId, Guid cityId, string? enTitle, string? faTitle, string? slug,
@@ -79,5 +81,7 @@ namespace IranCafe.Domain.CafeAgg
 
             LastUpdateDate = DateTime.Now;
         }
+
+        public void AddView() => View++;
     }
 }
