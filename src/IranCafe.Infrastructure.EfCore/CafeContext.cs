@@ -1,4 +1,5 @@
-﻿using IranCafe.Domain.CafeAgg;
+﻿using IranCafe.Domain.AccountAgg;
+using IranCafe.Domain.CafeAgg;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore.Mapping.UserAgg;
 using Microsoft.EntityFrameworkCore;
@@ -6,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace IranCafe.Infrastructure.EfCore
 {
     public class CafeContext : DbContext
-	{
-		public CafeContext(DbContextOptions<CafeContext> options) : base(options) { }
+    {
+        public CafeContext(DbContextOptions<CafeContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -16,7 +17,17 @@ namespace IranCafe.Infrastructure.EfCore
 
             var assembly = typeof(UserMapping).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+
+            modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Operator>().HasQueryFilter(q => !q.IsDelete);
         }
+
+        #region AccountAgg
+
+        public DbSet<Operator> Operators { get; set; }
+
+        #endregion
 
         #region UserAgg
 

@@ -16,6 +16,8 @@
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Mapping\CafeAgg\" />
     <None Remove="Repositories\CafeAgg\" />
+    <None Remove="Mapping\AccountAgg\" />
+    <None Remove="Repositories\AccountAgg\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
@@ -32,6 +34,8 @@
     <Folder Include="Mapping\UserAgg\" />
     <Folder Include="Mapping\CafeAgg\" />
     <Folder Include="Repositories\CafeAgg\" />
+    <Folder Include="Mapping\AccountAgg\" />
+    <Folder Include="Repositories\AccountAgg\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IranCafe.Domain\IranCafe.Domain.csproj" />
