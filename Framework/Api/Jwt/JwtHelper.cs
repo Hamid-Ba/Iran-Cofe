@@ -24,7 +24,7 @@ namespace Framework.Api.Jwt
                 {
                     new Claim(ClaimTypes.NameIdentifier, command.Id.ToString()),
                     new Claim(ClaimTypes.Name, command.FullName!),
-                    new Claim(ClaimTypes.Expired, command.LoginExpireDate.ToString())
+                    new Claim(ClaimTypes.Expired, command.LoginExpireDate.ToString()!)
                 }),
                 Expires = DateTime.UtcNow.AddDays(10),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

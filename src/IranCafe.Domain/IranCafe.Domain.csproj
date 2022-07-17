@@ -14,6 +14,8 @@
     <None Remove="SiteEntities \Contracts\" />
     <None Remove="PlanAgg\" />
     <None Remove="PlanAgg\Contracts\" />
+    <None Remove="AccountAgg\" />
+    <None Remove="AccountAgg\Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\" />
@@ -23,6 +25,8 @@
     <Folder Include="SiteEntities \Contracts\" />
     <Folder Include="PlanAgg\" />
     <Folder Include="PlanAgg\Contracts\" />
+    <Folder Include="AccountAgg\" />
+    <Folder Include="AccountAgg\Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\Framework.csproj" />

@@ -1,4 +1,4 @@
-﻿using IranCafe.Application.Contract.UserAgg;
+﻿using IranCafe.Application.Contract.UserAgg.Contracts;
 using IranCafe.Application.UserAgg;
 using IranCafe.Domain.CafeAgg.Contracts;
 using IranCafe.Domain.UserAgg;

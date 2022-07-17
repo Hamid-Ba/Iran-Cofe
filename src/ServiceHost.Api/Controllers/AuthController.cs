@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Framework.Api;
 using IranCafe.Application.Contract.UserAgg;
+using IranCafe.Application.Contract.UserAgg.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

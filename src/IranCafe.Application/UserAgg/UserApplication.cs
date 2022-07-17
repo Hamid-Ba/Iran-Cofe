@@ -2,6 +2,7 @@
 using Framework.Application;
 using Framework.Application.Sms;
 using IranCafe.Application.Contract.UserAgg;
+using IranCafe.Application.Contract.UserAgg.Contracts;
 using IranCafe.Domain.UserAgg;
 
 namespace IranCafe.Application.UserAgg
