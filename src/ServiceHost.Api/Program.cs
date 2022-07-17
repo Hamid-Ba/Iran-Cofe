@@ -4,6 +4,7 @@ using Framework.Application.Sms;
 using IranCafe.Infrastructure.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Framework.Application.Hashing;
 
 var builder = WebApplication.CreateBuilder(args);
 var service = builder.Services;
@@ -12,6 +13,7 @@ var service = builder.Services;
 service.AddHttpContextAccessor();
 service.AddTransient<IJwtHelper, JwtHelper>();
 service.AddTransient<ISmsService, SmsService>();
+service.AddTransient<IPasswordHasher, PasswordHasher>();
 CafeBootstrapper.Configure(service, builder.Configuration.GetConnectionString("Ir-Cafe"));
 
 service.AddAuthentication(options =>
@@ -56,3 +58,11 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
