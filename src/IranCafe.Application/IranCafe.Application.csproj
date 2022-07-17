@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <None Remove="UserAgg\" />
+    <None Remove="OperatorAgg\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\" />
+    <Folder Include="OperatorAgg\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IranCafe.Application.Contract\IranCafe.Application.Contract.csproj" />
