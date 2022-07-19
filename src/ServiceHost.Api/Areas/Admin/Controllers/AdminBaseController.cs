@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.Api.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "Operator")]
+    [Authorize(Roles = "Operator")]
     public class AdminBaseController : Controller
     {
         protected string ErrorMessage = "ErrorMessage";

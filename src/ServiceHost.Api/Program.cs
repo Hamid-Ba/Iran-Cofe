@@ -5,6 +5,8 @@ using IranCafe.Infrastructure.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Framework.Application.Hashing;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Framework.Application.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 var service = builder.Services;
@@ -12,6 +14,7 @@ var service = builder.Services;
 
 service.AddHttpContextAccessor();
 service.AddTransient<IJwtHelper, JwtHelper>();
+service.AddTransient<IAuthHelper, AuthHelper>();
 service.AddTransient<ISmsService, SmsService>();
 service.AddTransient<IPasswordHasher, PasswordHasher>();
 CafeBootstrapper.Configure(service, builder.Configuration.GetConnectionString("Ir-Cafe"));
@@ -20,9 +23,16 @@ service.AddControllersWithViews();
 
 service.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; 
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddCookie(o =>
+{
+    o.LoginPath = "/Account/Login";
+    o.LogoutPath = "/Account/Logout";
+    o.AccessDeniedPath = new PathString("/NotFound");
+    o.ExpireTimeSpan = TimeSpan.FromDays(5);
 }).AddJwtBearer(options =>
 {
     options.SaveToken = true;
@@ -53,6 +63,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -60,8 +73,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Account}/{action=Login}/{id?}"
+        );
+
+app.MapControllerRoute(
         name: "areas",
-        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+        pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
     );
 
 app.Run();

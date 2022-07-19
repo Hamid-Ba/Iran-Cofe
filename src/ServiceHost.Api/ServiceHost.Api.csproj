@@ -37,7 +37,6 @@
     <None Include="Areas\Admin\Views\Shared\_MenuSideBarPV.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_SiteMessage.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml" />
-    <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_AdminLoginLayout.cshtml" />
     <None Include="Views\Shared\_SiteMessage.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />

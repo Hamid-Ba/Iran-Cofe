@@ -19,6 +19,8 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.AccountAgg
             Mobile = o.Mobile,
         }).AsNoTracking().ToListAsync();
 
+        public async Task<Operator> GetBy(string mobile) => (await _context.Operators.FirstOrDefaultAsync(o => o.Mobile == mobile))!;
+
         public async Task<EditOperatorDto> GetDetailForEditBy(Guid id) => (await _context.Operators.Select(o => new EditOperatorDto
         {
             Id = o.Id,

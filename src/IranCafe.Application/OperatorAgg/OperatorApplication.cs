@@ -1,4 +1,5 @@
 ﻿using Framework.Application;
+using Framework.Application.Authentication;
 using Framework.Application.Hashing;
 using IranCafe.Application.Contract.AccountAgg;
 using IranCafe.Application.Contract.AccountAgg.Contracts;
@@ -9,11 +10,13 @@ namespace IranCafe.Application.AccountAgg
 {
     public class OperatorApplication : IOperatorApplication
     {
+        private readonly IAuthHelper _authHelper;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IOperatorRepository _operatorRepository;
 
-        public OperatorApplication(IPasswordHasher passwordHasher, IOperatorRepository operatorRepository)
+        public OperatorApplication(IAuthHelper authHelper, IPasswordHasher passwordHasher, IOperatorRepository operatorRepository)
         {
+            _authHelper = authHelper;
             _passwordHasher = passwordHasher;
             _operatorRepository = operatorRepository;
         }
@@ -71,5 +74,22 @@ namespace IranCafe.Application.AccountAgg
         public async Task<IEnumerable<OperatorDto>> GetAll() => await _operatorRepository.GetAll();
 
         public async Task<EditOperatorDto> GetDetailForEditBy(Guid id) => await _operatorRepository.GetDetailForEditBy(id);
+
+        public async Task<OperationResult> Login(LoginOperatorDto command)
+        {
+            OperationResult result = new();
+
+            var user = await _operatorRepository.GetBy(command.Mobile);
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            var verification = _passwordHasher.Check(user.Password, command.Password);
+            if (!verification.Verified) return result.Failed(ApplicationMessage.WrongPassword);
+
+            var userAuthVm = new OperatorAuthViewModel(user.Id, "مدیریت", user.FullName, user.Mobile);
+
+            _authHelper.SignInAsync(userAuthVm);
+
+            return result.Succeeded();
+        }
     }
 }
