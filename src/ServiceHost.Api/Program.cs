@@ -16,6 +16,8 @@ service.AddTransient<ISmsService, SmsService>();
 service.AddTransient<IPasswordHasher, PasswordHasher>();
 CafeBootstrapper.Configure(service, builder.Configuration.GetConnectionString("Ir-Cafe"));
 
+service.AddControllersWithViews();
+
 service.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -57,12 +59,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+app.MapControllerRoute(
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
-});
+
+app.Run();
