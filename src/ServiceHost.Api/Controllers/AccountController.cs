@@ -37,7 +37,7 @@ namespace ServiceHost.Api.Controllers
                 if (result.IsSucceeded)
                 {
                     TempData[SuccessMessage] = result.Message;
-                    return RedirectToAction("Index", "Home");
+                    return Redirect("admin/dashboard/index");
                 }
 
                 TempData[ErrorMessage] = result.Message;
@@ -60,7 +60,7 @@ namespace ServiceHost.Api.Controllers
                 TempData[ErrorMessage] = "هنوز وارد نشده اید که";
 
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
     }
 }

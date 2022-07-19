@@ -21,6 +21,9 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Operator>().HasQueryFilter(q => !q.IsDelete);
+
+            //Seed Operator
+            //modelBuilder.Entity<Operator>().HasData(new Operator("حمید بلال زاده", "09151498722", hashpassword););
         }
 
         #region AccountAgg

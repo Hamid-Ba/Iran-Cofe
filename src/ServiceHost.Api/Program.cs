@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Framework.Application.Hashing;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Framework.Application.Authentication;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
+using Microsoft.AspNetCore.Mvc.Filters;
+using IranCafe.Infrastructure.EfCore;
+using IranCafe.Domain.AccountAgg;
 
 var builder = WebApplication.CreateBuilder(args);
 var service = builder.Services;
@@ -20,6 +25,12 @@ service.AddTransient<IPasswordHasher, PasswordHasher>();
 CafeBootstrapper.Configure(service, builder.Configuration.GetConnectionString("Ir-Cafe"));
 
 service.AddControllersWithViews();
+
+#region html encoder
+
+service.AddSingleton(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));
+
+#endregion
 
 service.AddAuthentication(options =>
 {
@@ -71,6 +82,29 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Seed Operator
+void SeedDatabase() 
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _context = scope.ServiceProvider.GetRequiredService<CafeContext>();
+        var passwordHasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
+
+        Operator opt = _context.Operators.Where(i => i.Mobile == "09151498722").FirstOrDefault()!;
+        if (opt is null)
+        {
+            string hashpassword = passwordHasher.Hash("123");
+            //password: 123
+            Operator admin = new Operator("حمید بلال زاده", "09151498722", hashpassword);
+
+            _context.Operators.Add(admin);
+            _context.SaveChanges();
+        }
+    }
+}
+
+SeedDatabase();
 
 app.MapControllerRoute(
         name: "default",
