@@ -13,7 +13,7 @@ namespace IranCafe.Application.UserAgg
         private readonly ISmsService _smsService;
         private readonly IUserRepository _userRepository;
 
-        public UserApplication(IJwtHelper jwtHelper,ISmsService smsService, IUserRepository userRepository)
+        public UserApplication(IJwtHelper jwtHelper, ISmsService smsService, IUserRepository userRepository)
         {
             _jwtHelper = jwtHelper;
             _smsService = smsService;
@@ -46,9 +46,27 @@ namespace IranCafe.Application.UserAgg
             return result.Succeeded();
         }
 
+        public async Task<OperationResult> Edit(EditUserDto command)
+        {
+            OperationResult result = new();
+
+            var user = await _userRepository.GetEntityByIdAsync(command.Id);
+
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+            if (_userRepository.Exists(u => u.Email == command.Email && u.Id != command.Id))
+                return result.Failed(ApplicationMessage.DuplicatedEmail);
+
+            user.Edit(command.FullName!, command.Email!);
+            await _userRepository.SaveChangesAsync();
+
+            return result.Succeeded();
+        }
+
         public async Task<IEnumerable<UserDto>> GetAll(bool isDelete) => await _userRepository.GetAll(isDelete);
 
         public async Task<UserDto> GetBy(Guid id) => await _userRepository.GetBy(id);
+
+        public async Task<EditUserDto> GetDetailForEditBy(Guid id) => await _userRepository.GetDetailForEditBy(id);
 
         public async Task<OperationResult> LoginFirstStep(LoginUserDto command)
         {

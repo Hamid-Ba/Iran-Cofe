@@ -15,6 +15,7 @@
         public const string WrongStoreCode = "فروشگاهی با این کد وجود ندارد";
         public const string StoreOwnerHasAlreadyAStore = "فروشگاه این کاربر قبلا تایید شده است";
         public const string SlugIsExist = "محصولی با این اسلاگ وجود دارد";
+        public const string DuplicatedEmail = "ایمیل خود را وارد کنید";
 
         public const string InvalidAccessToken = "کد تایید نامعتبر هست";
 

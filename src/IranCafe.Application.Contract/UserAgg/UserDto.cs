@@ -15,6 +15,13 @@ namespace IranCafe.Application.Contract.UserAgg
         public DateTime LoginExpireDate { get; set; }
     }
 
+    public class EditUserDto
+    {
+        public Guid Id { get; set; }
+        public string? FullName { get;  set; }
+        public string? Email { get;  set; }
+    }
+
     public class RegisterUserDto
     {
         public string? Phone { get; set; }

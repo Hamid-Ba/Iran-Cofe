@@ -8,5 +8,6 @@ namespace IranCafe.Domain.UserAgg
         Task<UserDto> GetBy(Guid id);
 		Task<User> GetBy(string phone);
         Task<IEnumerable<UserDto>> GetAll(bool isDelete);
+        Task<EditUserDto> GetDetailForEditBy(Guid id);
     }
 }
