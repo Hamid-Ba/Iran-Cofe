@@ -16,6 +16,17 @@ namespace ServiceHost.Api.Areas.Admin.Controllers
             ViewBag.Count = users.Count();
             return View(users);
         }
-        
+
+        [HttpGet]
+        public async Task<IActionResult> ChangeStatus(Guid id)
+        {
+            var result = await _userApplication.ActiveOrDeactive(id);
+
+            if (result.IsSucceeded) TempData[SuccessMessage] = result.Message;
+
+            return new JsonResult(result);
+        }
+
+
     }
 }

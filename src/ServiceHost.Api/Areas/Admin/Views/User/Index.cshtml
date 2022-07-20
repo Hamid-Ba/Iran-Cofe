@@ -92,17 +92,11 @@
 
                                             @if (entity.IsActive)
                                             {
-                                                <a class="btn btn-warning pull-right m-rl-5"
-                                           href="#showmodal=@Url.Action("Edit", "User", new {id = entity.Id})">
-                                                    <i class="fa fa-close"></i>
-                                                </a>
+                                                <a class="btn btn-warning" asp-controller="User" asp-action="ChangeStatus" asp-route-id="@entity.Id">غیرفعال</a>
                                             }
                                             else
                                             {
-                                                <a class="btn btn-success pull-right m-rl-5"
-                                           href="#showmodal=@Url.Action("Edit", "User", new {id = entity.Id})">
-                                                    <i class="fa fa-tick"></i>
-                                                </a>
+                                                <a class="btn btn-success" asp-controller="User" asp-action="ChangeStatus" asp-route-id="@entity.Id">فعال</a>
                                             }
 
                                             @if (!ViewBag.IsDelete)
@@ -115,6 +109,11 @@
                                             <a class="btn btn-info pull-right m-rl-5"
                                            href="#showmodal=@Url.Action("Detail", "User", new {id = entity.Id})">
                                                 <i class="fa fa-detail"></i>
+                                            </a>
+
+                                            <a class="btn btn-primary pull-right m-rl-5"
+                                           href="#showmodal=@Url.Action("SendMessage", "User", new {id = entity.Id})">
+                                                <i class="fa fa-email"></i>
                                             </a>
                                         </td>
                                     </tr>

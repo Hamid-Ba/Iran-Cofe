@@ -20,6 +20,24 @@ namespace IranCafe.Application.UserAgg
             _userRepository = userRepository;
         }
 
+        public async Task<OperationResult> ActiveOrDeactive(Guid id)
+        {
+            OperationResult result = new();
+
+            var user = await _userRepository.GetEntityByIdAsync(id);
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            user.ControlActivation(!user.IsActive);
+            await _userRepository.SaveChangesAsync();
+
+            return result.Succeeded();
+        }
+
+        public Task<OperationResult> Delete(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<UserDto>> GetAll(bool isDelete) => await _userRepository.GetAll(isDelete);
 
         public async Task<UserDto> GetBy(Guid id) => await _userRepository.GetBy(id);
@@ -63,6 +81,11 @@ namespace IranCafe.Application.UserAgg
             await _userRepository.SaveChangesAsync();
 
             return result.Succeeded();
+        }
+
+        public Task<OperationResult> SendMessage(Guid id, string message)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<(OperationResult, string)> VerifyLoginRegister(AccessTokenDto command)
