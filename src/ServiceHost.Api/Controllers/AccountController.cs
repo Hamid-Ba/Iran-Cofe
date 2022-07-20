@@ -51,15 +51,8 @@ namespace ServiceHost.Api.Controllers
         [HttpGet]
         public IActionResult Logout()
         {
-            if (User.Identity!.IsAuthenticated)
-            {
-                _authHelper.SignOut();
-                TempData[SuccessMessage] = "با موفقیت خارج شدید";
-            }
-            else
-                TempData[ErrorMessage] = "هنوز وارد نشده اید که";
-
-
+            _authHelper.SignOut();
+            TempData[SuccessMessage] = "با موفقیت خارج شدید";
             return RedirectToAction("Login", "Account");
         }
     }
