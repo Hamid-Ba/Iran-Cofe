@@ -9,8 +9,8 @@ namespace IranCafe.Application.Contract.UserAgg.Contracts
         Task<OperationResult> ActiveOrDeactive(Guid id);
         Task<IEnumerable<UserDto>> GetAll(bool isDelete);
         Task<OperationResult> Register(RegisterUserDto command);
+        Task<OperationResult> SendMessage(SendSmsUserDto command);
         Task<OperationResult> LoginFirstStep(LoginUserDto command);
-        Task<OperationResult> SendMessage(Guid id, string message);
         //Task<(OperationResult,string)> VerifyRegister(AccessTokenDto command);
         Task<(OperationResult, string)> VerifyLoginRegister(AccessTokenDto command);
     }

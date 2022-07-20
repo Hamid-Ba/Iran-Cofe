@@ -91,9 +91,17 @@ namespace IranCafe.Application.UserAgg
             return result.Succeeded();
         }
 
-        public Task<OperationResult> SendMessage(Guid id, string message)
+        public async Task<OperationResult> SendMessage(SendSmsUserDto command)
         {
-            throw new NotImplementedException();
+            OperationResult result = new();
+
+            var user = await _userRepository.GetEntityByIdAsync(command.Id);
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            //ToDo : Send Phone Code
+            _smsService.SendSms(user.Phone!, command.Message!);
+
+            return result.Succeeded();
         }
 
         public async Task<(OperationResult, string)> VerifyLoginRegister(AccessTokenDto command)

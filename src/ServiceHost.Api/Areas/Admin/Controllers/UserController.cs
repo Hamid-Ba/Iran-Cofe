@@ -1,4 +1,5 @@
-﻿using IranCafe.Application.Contract.UserAgg.Contracts;
+﻿using IranCafe.Application.Contract.UserAgg;
+using IranCafe.Application.Contract.UserAgg.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.Api.Areas.Admin.Controllers
@@ -21,6 +22,20 @@ namespace ServiceHost.Api.Areas.Admin.Controllers
         public async Task<IActionResult> ChangeStatus(Guid id)
         {
             var result = await _userApplication.ActiveOrDeactive(id);
+
+            if (result.IsSucceeded) TempData[SuccessMessage] = result.Message;
+
+            return new JsonResult(result);
+        }
+
+        [HttpGet]
+        public IActionResult SendMessage(Guid id) => PartialView(new SendSmsUserDto() { Id = id });
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendMessage(SendSmsUserDto command)
+        {
+            var result = await _userApplication.SendMessage(command);
 
             if (result.IsSucceeded) TempData[SuccessMessage] = result.Message;
 

@@ -1,4 +1,7 @@
-﻿namespace IranCafe.Application.Contract.UserAgg
+﻿using Framework.Application;
+using System.ComponentModel.DataAnnotations;
+
+namespace IranCafe.Application.Contract.UserAgg
 {
     public class UserDto : EntityBaseDto
     {
@@ -20,6 +23,16 @@
     public class LoginUserDto : RegisterUserDto
     {
         
+    }
+
+    public class SendSmsUserDto
+    {
+        public Guid Id { get; set; }
+
+        [Display(Name = "پیام")]
+        [Required(ErrorMessage = ValidationMessage.IsRequired)]
+        [MaxLength(500, ErrorMessage = "حداکثر تعداد کاراکتر مجاز {1} می باشد")]
+        public string? Message { get; set; }
     }
 
     public class AccessTokenDto : RegisterUserDto
