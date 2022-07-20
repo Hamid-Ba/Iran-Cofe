@@ -33,9 +33,17 @@ namespace IranCafe.Application.UserAgg
             return result.Succeeded();
         }
 
-        public Task<OperationResult> Delete(Guid id)
+        public async Task<OperationResult> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            OperationResult result = new();
+
+            var user = await _userRepository.GetEntityByIdAsync(id);
+            if (user is null) return result.Failed(ApplicationMessage.UserNotExist);
+
+            user.Delete();
+            await _userRepository.SaveChangesAsync();
+
+            return result.Succeeded();
         }
 
         public async Task<IEnumerable<UserDto>> GetAll(bool isDelete) => await _userRepository.GetAll(isDelete);
