@@ -1,4 +1,5 @@
-﻿using Framework.Infrastructure;
+﻿using Framework.Application;
+using Framework.Infrastructure;
 using IranCafe.Application.Contract.UserAgg;
 using IranCafe.Domain.UserAgg;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +17,8 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.UserAgg
             Id = u.Id,
             Phone = u.Phone,
             IsActive = u.IsActive,
-            CreationDate = u.CreationDate,
-            DeletionDate = u.DeletionDate
+            PersianCreationDate = u.CreationDate.ToFarsi(),
+            PersianDeletionDate = u.DeletionDate.ToFarsi()
         }).AsNoTracking().ToListAsync();
 
         public async Task<User> GetBy(string phone) => (await _context.Users.FirstOrDefaultAsync(u => u.Phone == phone))!;
