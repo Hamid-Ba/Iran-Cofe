@@ -10,7 +10,6 @@
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@User.Identity?.Name<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="md md-face-unlock"></i> وب سایت<div class="ripple-wrapper"></div></a></li>
                         <li><a asp-area="" asp-controller="Account" asp-action="Logout"><i class="md md-settings-power"></i> خروج</a></li>
                     </ul>
                 </div>
@@ -26,33 +25,27 @@
                 </li>
 
                 <li class="has_sub">
-                    <a class="waves-effect"><i class="md md-store"></i><span> سیستم محصولات </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <a class="waves-effect"><i class="md md-store"></i><span> سیستم مشتریان  </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">دسته بندی ها</a></li>
-                        <li><a asp-area="Admin" asp-controller="Brand" asp-action="Index">برند ها</a></li>
-                        <li><a asp-area="Admin" asp-controller="Product" asp-action="Index">محصولات</a></li>
-                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index">فروشگاه ها</a></li>
+                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index"> مشتریان</a></li>
+                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index"> مشتریان تایید شده </a></li>
+                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index"> مشتری رد شده </a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a asp-area="Admin" asp-controller="Discount" asp-action="Index" class="waves-effect"><i class="fa fa-cart-plus"></i><span> سیستم تخفیفات </span></a>
-                </li>
-
-                <li>
-                    <a asp-area="Admin" asp-controller="Visitor" asp-action="Index" class="waves-effect"><i class="fa fa-user"></i><span> سیستم بازایاب ها </span></a>
+                    <a asp-area="Admin" asp-controller="City" asp-action="Index" class="waves-effect"><i class="fa fa-users"></i><span> مدیریت کاربران  </span></a>
                 </li>
 
                 <li class="has_sub">
-                    <a class="waves-effect"><i class="fa fa-users"></i><span> سیستم کاربران </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <a class="waves-effect"><i class="fa fa-user"></i><span> سیستم مدیریت </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a asp-area="Admin" asp-controller="Role" asp-action="Index">نقش ها</a></li>
                         <li><a asp-area="Admin" asp-controller="Operator" asp-action="Index">اپراتورها</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a asp-area="Admin" asp-controller="City" asp-action="Index" class="waves-effect"><i class="fa fa-building"></i><span> مدیریت شهر ها </span></a>
+                    <a asp-area="Admin" asp-controller="City" asp-action="Index" class="waves-effect"><i class="fa fa-building"></i><span> مدیریت استان ها </span></a>
                 </li>
 
                 <li class="has_sub">
