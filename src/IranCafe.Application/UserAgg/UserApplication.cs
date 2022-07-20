@@ -20,6 +20,10 @@ namespace IranCafe.Application.UserAgg
             _userRepository = userRepository;
         }
 
+        public async Task<IEnumerable<UserDto>> GetAll(bool isDelete) => await _userRepository.GetAll(isDelete);
+
+        public async Task<UserDto> GetBy(Guid id) => await _userRepository.GetBy(id);
+
         public async Task<OperationResult> LoginFirstStep(LoginUserDto command)
         {
             OperationResult result = new();
