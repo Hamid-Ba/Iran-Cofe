@@ -19,6 +19,9 @@ namespace ServiceHost.Api.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Detail(Guid id) => PartialView(await _userApplication.GetBy(id));
+
+        [HttpGet]
         public async Task<IActionResult> ChangeStatus(Guid id)
         {
             var result = await _userApplication.ActiveOrDeactive(id);

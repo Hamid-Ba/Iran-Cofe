@@ -29,7 +29,7 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.UserAgg
             FullName = u.FullName,
             Phone = u.Phone,
             Email = u.Email,
-            CreationDate = u.CreationDate
+            PersianCreationDate = u.CreationDate.ToFarsi()
         }).AsNoTracking().FirstOrDefaultAsync(u => u.Id == id))!;
     }
 }

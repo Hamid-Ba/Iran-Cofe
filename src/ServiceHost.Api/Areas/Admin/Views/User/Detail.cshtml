@@ -1,0 +1,58 @@
+﻿@using IranCafe.Application.Contract.UserAgg
+@model UserDto
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">مشخصات کاربر</h4>
+</div>
+
+<div class="modal-body">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label">نام کامل</label>
+                @if (string.IsNullOrWhiteSpace(Model.FullName))
+                {
+                    <p class="badge badge-danger">وارد نشده</p>
+                }
+                else
+                {
+                    <p>@Model.FullName</p>
+                }
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label">شماره موبایل</label>
+                <p>@Model.Phone</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">ایمیل</label>
+                @if (string.IsNullOrWhiteSpace(Model.Email))
+                {
+                    <p class="badge badge-danger">وارد نشده</p>
+                }
+                else
+                {
+                    <p>@Model.Email</p>
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label">تاریخ ثبت</label>
+                <p>@Model.PersianCreationDate</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
+</div>
