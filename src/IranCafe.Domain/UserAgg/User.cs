@@ -38,7 +38,6 @@ namespace IranCafe.Domain.UserAgg
             LastUpdateDate = DateTime.Now;
         }
 
-
         public void ControlActivation(bool isActive)
         {
             IsActive = isActive;

@@ -1,5 +1,6 @@
 ﻿using IranCafe.Domain.AccountAgg;
 using IranCafe.Domain.CafeAgg;
+using IranCafe.Domain.SiteEntities;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore.Mapping.UserAgg;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Operator>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Province>().HasQueryFilter(q => !q.IsDelete);
 
             //Seed Operator
             //modelBuilder.Entity<Operator>().HasData(new Operator("حمید بلال زاده", "09151498722", hashpassword););
@@ -41,6 +43,12 @@ namespace IranCafe.Infrastructure.EfCore
         #region CafeAgg
 
         public DbSet<Cafe> Cafes { get; set; }
+
+        #endregion
+
+        #region SiteEntities
+
+        public DbSet<Province> Provinces { get; set; }
 
         #endregion
     }
