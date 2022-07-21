@@ -1,13 +1,17 @@
 ﻿using IranCafe.Application.AccountAgg;
 using IranCafe.Application.Contract.AccountAgg.Contracts;
+using IranCafe.Application.Contract.SiteEntities.Contracts;
 using IranCafe.Application.Contract.UserAgg.Contracts;
+using IranCafe.Application.SiteEntities;
 using IranCafe.Application.UserAgg;
 using IranCafe.Domain.AccountAgg.Contracts;
 using IranCafe.Domain.CafeAgg.Contracts;
+using IranCafe.Domain.SiteEntities.Contracts;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore;
 using IranCafe.Infrastructure.EfCore.Repositories.AccountAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.CafeAgg;
+using IranCafe.Infrastructure.EfCore.Repositories.SiteEntities;
 using IranCafe.Infrastructure.EfCore.Repositories.UserAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,7 +46,12 @@ namespace IranCafe.Infrastructure.Configuration
 
             #endregion
 
+            #region SiteEntities
 
+            service.AddTransient<IProvinceRepository, ProvinceRepository>();
+            service.AddTransient<IProvinceApplication, ProvinceApplication>();
+
+            #endregion
         }
     } 
 }
