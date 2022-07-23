@@ -13,7 +13,6 @@
     <None Remove="UserAgg\Contracts\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SiteEntities\Contracts\" />
     <Folder Include="UserAgg\" />
     <Folder Include="AccountAgg\" />
     <Folder Include="AccountAgg\Contracts\" />
