@@ -14,7 +14,7 @@ namespace ServiceHost.Api.Controllers
         public CafeController(ICafeApplication cafeApplication) => _cafeApplication = cafeApplication;
 
         [HttpPost("registerCafe")]
-        public async Task<IActionResult> RegisterCafe([FromBody]RegisterCafeDto command)
+        public async Task<IActionResult> RegisterCafe([FromBody] RegisterCafeDto command)
         {
             try
             {
@@ -27,6 +27,23 @@ namespace ServiceHost.Api.Controllers
                 return BadRequest(ApiResultMessages.ModelStateNotValid);
             }
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Edit([FromBody] EditCafeDto command)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = await _cafeApplication.Edit(command);
+                    return result.IsSucceeded ? Ok(result.Message) : BadRequest(result.Message);
+                }
+
+                return BadRequest(ApiResultMessages.ModelStateNotValid);
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+
         }
     }
 }
