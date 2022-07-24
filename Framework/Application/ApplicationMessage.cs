@@ -16,8 +16,8 @@
         public const string StoreOwnerHasAlreadyAStore = "فروشگاه این کاربر قبلا تایید شده است";
         public const string SlugIsExist = "محصولی با این اسلاگ وجود دارد";
         public const string DuplicatedEmail = "ایمیل خود را وارد کنید";
-
+        public const string CafeRegisteredByThisPhone = "کافه یا رستورانی با این شماره به ثبت رسیده";
         public const string InvalidAccessToken = "کد تایید نامعتبر هست";
-
+        public const string UserOwnsCafe = "شما قبلا کافه یا رستوران خود را ثبت کرده اید";
     }
 }

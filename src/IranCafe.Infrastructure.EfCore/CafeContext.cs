@@ -14,7 +14,7 @@ namespace IranCafe.Infrastructure.EfCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
-                relationship.DeleteBehavior = DeleteBehavior.Cascade;
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
 
             var assembly = typeof(UserMapping).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
