@@ -71,4 +71,11 @@ namespace IranCafe.Application.Contract.CafeAgg
         public string? Desc { get; set; }
         public CafeType Type { get; set; }
     }
+
+    public class ChangeCafeStatusDto
+    {
+        public Guid Id { get; set; }
+        public CafeStatus Status { get; set; }
+        public string? Reason { get; set; }
+    }
 }
