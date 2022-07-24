@@ -10,7 +10,7 @@ namespace ServiceHost.Api.Areas.Admin.Controllers
 
         public CityController(ICityApplication cityApplication) => _cityApplication = cityApplication;
 
-        public async Task<IActionResult> Index(Guid provinceId) => View(await _cityApplication.GeAllBy(provinceId));
+        public async Task<IActionResult> Index(Guid provinceId) => View(await _cityApplication.GetAllBy(provinceId));
 
         [HttpGet]
         public IActionResult Create(Guid provinceId) => PartialView(new CreateCityDto { ProvinceId = provinceId });

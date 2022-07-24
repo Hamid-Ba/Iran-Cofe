@@ -18,7 +18,6 @@ namespace ServiceHost.Api.Controllers
                 return Ok(result);
             }
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }
-            
         }
     }
 }

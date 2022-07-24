@@ -56,7 +56,7 @@ namespace IranCafe.Application.SiteEntities
             return result.Succeeded();
         }
 
-        public async Task<IEnumerable<CityDto>> GeAllBy(Guid provinceId) => await _cityRepository.GetAllBy(provinceId);
+        public async Task<IEnumerable<CityDto>> GetAllBy(Guid provinceId) => await _cityRepository.GetAllBy(provinceId);
 
         public async Task<CityDto> GetBy(Guid id) => await _cityRepository.GetBy(id);
 

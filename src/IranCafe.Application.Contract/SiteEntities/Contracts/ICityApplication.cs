@@ -9,6 +9,6 @@ namespace IranCafe.Application.Contract.SiteEntities.Contracts
         Task<EditCityDto> GetDetailForEditBy(Guid id);
         Task<OperationResult> Edit(EditCityDto command);
         Task<OperationResult> Create(CreateCityDto command);
-        Task<IEnumerable<CityDto>> GeAllBy(Guid provinceId);
+        Task<IEnumerable<CityDto>> GetAllBy(Guid provinceId);
     }
 }
