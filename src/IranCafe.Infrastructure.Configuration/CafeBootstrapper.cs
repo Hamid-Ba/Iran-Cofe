@@ -1,5 +1,7 @@
 ﻿using IranCafe.Application.AccountAgg;
+using IranCafe.Application.CafeAgg;
 using IranCafe.Application.Contract.AccountAgg.Contracts;
+using IranCafe.Application.Contract.CafeAgg.Contracts;
 using IranCafe.Application.Contract.SiteEntities.Contracts;
 using IranCafe.Application.Contract.UserAgg.Contracts;
 using IranCafe.Application.SiteEntities;
@@ -43,6 +45,7 @@ namespace IranCafe.Infrastructure.Configuration
             #region CafeAgg
 
             service.AddTransient<ICafeRepository, CafeRepository>();
+            service.AddTransient<ICafeApplication, CafeApplication>();
 
             #endregion
 

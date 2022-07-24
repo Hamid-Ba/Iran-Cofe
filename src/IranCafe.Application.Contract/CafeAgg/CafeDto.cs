@@ -26,6 +26,18 @@ namespace IranCafe.Application.Contract.CafeAgg
         public CafeType Type { get; set; }
     }
 
+    public class CafeAdminDto
+    {
+        public Guid Id { get; set; }
+        public Guid OwnerId { get; set; }
+        public string? OwnerFullName { get; set; }
+        public string? UniqueCode { get; set; }
+        public string? FaTitle { get; set; }
+        public CafeType Type { get; set; }
+        public CafeStatus Status { get; set; }
+        public string? PersianCreationDate { get; set; }
+    }
+
     public class RegisterCafeDto
     {
         public Guid OwnerId { get; set; }

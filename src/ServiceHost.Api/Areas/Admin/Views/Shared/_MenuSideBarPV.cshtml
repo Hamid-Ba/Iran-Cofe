@@ -1,4 +1,5 @@
-﻿@using Framework.Application.Authentication
+﻿@using Framework.Domain.Cafe;
+@using Framework.Application.Authentication
 
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
@@ -27,9 +28,9 @@
                 <li class="has_sub">
                     <a class="waves-effect"><i class="md md-store"></i><span> سیستم مشتریان  </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index"> مشتریان</a></li>
-                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index"> مشتریان تایید شده </a></li>
-                        <li><a asp-area="Admin" asp-controller="Market" asp-action="Index"> مشتری رد شده </a></li>
+                        <li><a asp-area="Admin" asp-controller="Cafe" asp-action="FilterCafes" asp-route-status="@CafeStatus.Pending">  مشتریان در حال بررسی</a></li>
+                        <li><a asp-area="Admin" asp-controller="Cafe" asp-action="FilterCafes" asp-route-status="@CafeStatus.Confirmed"> مشتریان تایید شده </a></li>
+                        <li><a asp-area="Admin" asp-controller="Cafe" asp-action="FilterCafes" asp-route-status="@CafeStatus.Reject"> مشتریان رد شده </a></li>
                     </ul>
                 </li>
 
