@@ -51,4 +51,24 @@ namespace IranCafe.Application.Contract.CafeAgg
         public string? Desc { get; set; }
         public CafeType Type { get; set; }
     }
+
+    public class EditCafeDto
+    {
+        public Guid Id { get; set; }
+        public Guid OwnerId { get; set; }
+        public Guid CityId { get; set; }
+        public string? UniqueCode { get; set; }
+        public string? EnTitle { get; set; }
+        public string? FaTitle { get; set; }
+        public string? Slug { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
+        public string? InstagramId { get; set; }
+        public string? TelegramId { get; set; }
+        public string? Street { get; set; }
+        public string? PostalCode { get; set; }
+        public string? ShortDesc { get; set; }
+        public string? Desc { get; set; }
+        public CafeType Type { get; set; }
+    }
 }

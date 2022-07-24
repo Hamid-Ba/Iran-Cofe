@@ -19,6 +19,23 @@ namespace IranCafe.Application.CafeAgg
             _userRepository = userRepository;
         }
 
+        public async Task<OperationResult> Edit(EditCafeDto command)
+        {
+            OperationResult result = new();
+
+            var cafe = await _cafeRepository.GetEntityByIdAsync(command.Id);
+            
+            if (cafe is null) return result.Failed(ApplicationMessage.NotExist);
+            if (_cafeRepository.Exists(c => c.Phone == command.Phone && c.Id != command.Id))
+                return result.Failed(ApplicationMessage.CafeRegisteredByThisPhone);
+
+            cafe.Edit(command.CityId, command.EnTitle, command.FaTitle, command.Slug, command.Phone, command.Email, command.InstagramId, command.TelegramId, command.Street
+                , command.PostalCode, command.ShortDesc, command.Desc, command.Type);
+            await _cafeRepository.SaveChangesAsync();
+
+            return result.Succeeded();
+        }
+
         public async Task<IEnumerable<CafeAdminDto>> GetAllBy(CafeStatus status) => await _cafeRepository.GetAllBy(status);
 
         public async Task<OperationResult> Register(RegisterCafeDto command)

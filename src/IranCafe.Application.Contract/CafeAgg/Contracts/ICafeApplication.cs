@@ -5,6 +5,7 @@ namespace IranCafe.Application.Contract.CafeAgg.Contracts
 {
     public interface ICafeApplication
     {
+        Task<OperationResult> Edit(EditCafeDto command);
         Task<OperationResult> Register(RegisterCafeDto command);
         Task<IEnumerable<CafeAdminDto>> GetAllBy(CafeStatus status);
     }

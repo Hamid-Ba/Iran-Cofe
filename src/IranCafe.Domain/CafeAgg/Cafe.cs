@@ -49,11 +49,10 @@ namespace IranCafe.Domain.CafeAgg
             View = 0;
         }
 
-        public void Edit(Guid ownerId, Guid cityId, string? enTitle, string? faTitle, string? slug,
+        public void Edit(Guid cityId, string? enTitle, string? faTitle, string? slug,
             string? phone, string? email, string? instagramId, string? telegramId, string? street, string? postalCode,string? shortDesc,
-            string? desc, string? googleMapUrl, CafeType type)
+            string? desc, CafeType type)
         {
-            OwnerId = ownerId;
             CityId = cityId;
             
             EnTitle = enTitle;
@@ -68,9 +67,9 @@ namespace IranCafe.Domain.CafeAgg
             ShortDesc = shortDesc;
             Desc = desc;
 
-            GoogleMapUrl = googleMapUrl;
-            
             Type = type;
+
+            LastUpdateDate = DateTime.Now;
         }
 
         public void ChangeStatus(CafeStatus status, string reason)
