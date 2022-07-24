@@ -1,4 +1,5 @@
 ﻿using Framework.Domain;
+using IranCafe.Domain.CafeAgg;
 
 namespace IranCafe.Domain.SiteEntities
 {
@@ -7,7 +8,8 @@ namespace IranCafe.Domain.SiteEntities
         public Guid ProvinceId { get;private set; }
         public string? Title { get; private set; }
 
-        public Province Province { get; set; }
+        public Province? Province { get; set; }
+        public List<Cafe>? Cafe { get; set; }
 
         public City(Guid provinceId, string? title)
         {

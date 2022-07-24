@@ -51,6 +51,9 @@ namespace IranCafe.Infrastructure.Configuration
             service.AddTransient<IProvinceRepository, ProvinceRepository>();
             service.AddTransient<IProvinceApplication, ProvinceApplication>();
 
+            service.AddTransient<ICityRepository, CityRepository>();
+            service.AddTransient<ICityApplication, CityApplication>();
+
             #endregion
         }
     } 

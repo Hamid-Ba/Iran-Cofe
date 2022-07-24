@@ -1,5 +1,4 @@
-﻿using System;
-using Framework.Infrastructure;
+﻿using Framework.Infrastructure;
 using IranCafe.Domain.CafeAgg;
 using IranCafe.Domain.CafeAgg.Contracts;
 

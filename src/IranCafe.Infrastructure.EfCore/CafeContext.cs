@@ -21,6 +21,7 @@ namespace IranCafe.Infrastructure.EfCore
 
             modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<City>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Operator>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Province>().HasQueryFilter(q => !q.IsDelete);
 
@@ -48,6 +49,7 @@ namespace IranCafe.Infrastructure.EfCore
 
         #region SiteEntities
 
+        public DbSet<City> City { get; set; }
         public DbSet<Province> Provinces { get; set; }
 
         #endregion
