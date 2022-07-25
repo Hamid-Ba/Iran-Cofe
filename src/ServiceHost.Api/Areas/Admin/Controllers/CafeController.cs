@@ -32,10 +32,10 @@ namespace ServiceHost.Api.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult DissConfirm(Guid id) => PartialView("DissConfirm", new ChangeCafeStatusDto() { Id = id });
+        public IActionResult Reject(Guid id) => PartialView("Reject", new ChangeCafeStatusDto() { Id = id });
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> DissConfirm(ChangeCafeStatusDto command)
+        public async Task<IActionResult> Reject(ChangeCafeStatusDto command)
         {
             command.Status = CafeStatus.Reject;
 
