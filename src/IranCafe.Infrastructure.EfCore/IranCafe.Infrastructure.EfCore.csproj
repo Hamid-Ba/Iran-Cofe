@@ -30,8 +30,6 @@
   <ItemGroup>
     <Folder Include="Repositories\UserAgg\" />
     <Folder Include="Mapping\UserAgg\" />
-    <Folder Include="Mapping\CafeAgg\" />
-    <Folder Include="Repositories\CafeAgg\" />
     <Folder Include="Mapping\AccountAgg\" />
     <Folder Include="Repositories\AccountAgg\" />
   </ItemGroup>
