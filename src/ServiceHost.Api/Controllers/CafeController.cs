@@ -13,6 +13,17 @@ namespace ServiceHost.Api.Controllers
 
         public CafeController(ICafeApplication cafeApplication) => _cafeApplication = cafeApplication;
 
+        [HttpGet("{cityOrProvinceId}/{isCity}")]
+        public async Task<IActionResult> GetAllBy(Guid cityOrProvinceId , bool isCity)
+        {
+            try
+            {
+                var result = await _cafeApplication.GetAllBy(cityOrProvinceId, isCity);
+                return Ok(result);
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
+
         [HttpPost("registerCafe")]
         public async Task<IActionResult> RegisterCafe([FromBody] RegisterCafeDto command)
         {

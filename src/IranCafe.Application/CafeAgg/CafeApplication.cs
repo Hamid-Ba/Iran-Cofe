@@ -28,7 +28,7 @@ namespace IranCafe.Application.CafeAgg
 
             cafe.ChangeStatus(command.Status, command.Reason!);
             await _cafeRepository.SaveChangesAsync();
-            
+
             //ToDo : SMS Reason To Owner
 
             return result.Succeeded();
@@ -39,13 +39,13 @@ namespace IranCafe.Application.CafeAgg
             OperationResult result = new();
 
             var cafe = await _cafeRepository.GetEntityByIdAsync(command.Id);
-            
+
             if (cafe is null) return result.Failed(ApplicationMessage.NotExist);
             if (_cafeRepository.Exists(c => c.Phone == command.Phone && c.Id != command.Id))
                 return result.Failed(ApplicationMessage.CafeRegisteredByThisPhone);
 
-            cafe.Edit(command.CityId, command.EnTitle, command.FaTitle, command.Slug, command.Phone, command.Email, command.InstagramId, command.TelegramId, command.Street
-                , command.PostalCode, command.ShortDesc, command.Desc, command.Type);
+            cafe.Edit(command.ProvinceId, command.CityId, command.EnTitle, command.FaTitle, command.Slug, command.Phone, command.Email,
+                command.InstagramId, command.TelegramId, command.Street, command.PostalCode, command.ShortDesc, command.Desc, command.Type);
             await _cafeRepository.SaveChangesAsync();
 
             return result.Succeeded();
@@ -53,16 +53,18 @@ namespace IranCafe.Application.CafeAgg
 
         public async Task<IEnumerable<CafeAdminDto>> GetAllBy(CafeStatus status) => await _cafeRepository.GetAllBy(status);
 
+        public async Task<IEnumerable<CafesDto>> GetAllBy(Guid provinceOrCityId, bool isCity = false) => await _cafeRepository.GetAllBy(provinceOrCityId, isCity);
+
         public async Task<OperationResult> Register(RegisterCafeDto command)
         {
             OperationResult result = new();
 
             if (_cafeRepository.Exists(c => c.OwnerId == command.OwnerId)) return result.Failed(ApplicationMessage.UserOwnsCafe);
             if (_cafeRepository.Exists(c => c.Phone == command.Phone)) return result.Failed(ApplicationMessage.CafeRegisteredByThisPhone);
-
+            
             //Add Cafe
             var uniqueCode = Guid.NewGuid().ToString().Substring(0, 6);
-            var cafe = new Cafe(command.OwnerId, command.CityId, command.Type, uniqueCode, 
+            var cafe = new Cafe(command.OwnerId,command.ProvinceId, command.CityId, command.Type, uniqueCode,
                 command.EnTitle!, command.FaTitle!, command.Slug!, command.Phone!, command.Street!, command.ShortDesc!, command.Desc!);
 
             await _cafeRepository.AddEntityAsync(cafe);

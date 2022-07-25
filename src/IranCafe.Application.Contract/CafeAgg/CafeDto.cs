@@ -5,11 +5,13 @@ namespace IranCafe.Application.Contract.CafeAgg
     public class CafeDto : EntityBaseDto
     {
         public Guid OwnerId { get; set; }
+        public Guid ProvinceId { get; set; }
         public Guid CityId { get; set; }
         public string? UniqueCode { get; set; }
         public string? QRCode { get; set; }
         public string? EnTitle { get; set; }
         public string? FaTitle { get; set; }
+        public string? ImageUrl { get; set; }
         public string? Slug { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }
@@ -41,6 +43,7 @@ namespace IranCafe.Application.Contract.CafeAgg
     public class RegisterCafeDto
     {
         public Guid OwnerId { get; set; }
+        public Guid ProvinceId { get; set; }
         public Guid CityId { get; set; }
         public string? EnTitle { get; set; }
         public string? FaTitle { get; set; }
@@ -56,6 +59,7 @@ namespace IranCafe.Application.Contract.CafeAgg
     {
         public Guid Id { get; set; }
         public Guid OwnerId { get; set; }
+        public Guid ProvinceId { get; set; }
         public Guid CityId { get; set; }
         public string? UniqueCode { get; set; }
         public string? EnTitle { get; set; }
@@ -70,6 +74,19 @@ namespace IranCafe.Application.Contract.CafeAgg
         public string? ShortDesc { get; set; }
         public string? Desc { get; set; }
         public CafeType Type { get; set; }
+    }
+
+    public class CafesDto
+    {
+        public Guid Id { get; set; }
+        public Guid OwnerId { get; set; }
+        public string? UniqueCode { get; set; }
+        public int View { get; set; }
+        public CafeType Type { get; set; }
+        public string? PersianRegisterDate { get; set; }
+        public string? InstagramId { get; set; }
+        public string? ImageUrl { get; set; }
+
     }
 
     public class ChangeCafeStatusDto

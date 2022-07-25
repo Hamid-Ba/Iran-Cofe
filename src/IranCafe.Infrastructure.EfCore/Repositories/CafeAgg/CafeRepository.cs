@@ -1,4 +1,5 @@
-﻿using Framework.Domain.Cafe;
+﻿using Framework.Application;
+using Framework.Domain.Cafe;
 using Framework.Infrastructure;
 using IranCafe.Application.Contract.CafeAgg;
 using IranCafe.Domain.CafeAgg;
@@ -31,6 +32,40 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
             result.ForEach(c => c.OwnerFullName = users.FirstOrDefault(u => u.Id == c.OwnerId)?.FullName);
 
             return result;
+        }
+
+        public async Task<IEnumerable<CafesDto>> GetAllBy(Guid provinceOrCityId, bool isCity)
+        {
+            if (isCity)
+            {
+                return await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.CityId == provinceOrCityId).
+                    Select(c => new CafesDto
+                    {
+                        Id = c.Id,
+                        OwnerId = c.OwnerId,
+                        UniqueCode = c.UniqueCode,
+                        ImageUrl = c.ImageUrl,
+                        InstagramId = c.InstagramId,
+                        Type = c.Type,
+                        View = c.View,
+                        PersianRegisterDate = c.CreationDate.ToFarsi()
+                    }).AsNoTracking().ToListAsync();
+            }
+            else
+            {
+                return await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.ProvinceId == provinceOrCityId).
+                    Select(c => new CafesDto
+                    {
+                        Id = c.Id,
+                        OwnerId = c.OwnerId,
+                        UniqueCode = c.UniqueCode,
+                        ImageUrl = c.ImageUrl,
+                        InstagramId = c.InstagramId,
+                        Type = c.Type,
+                        View = c.View,
+                        PersianRegisterDate = c.CreationDate.ToFarsi()
+                    }).AsNoTracking().ToListAsync();
+            }
         }
     }
 }
