@@ -47,6 +47,9 @@ namespace IranCafe.Infrastructure.Configuration
             service.AddTransient<ICafeRepository, CafeRepository>();
             service.AddTransient<ICafeApplication, CafeApplication>();
 
+            service.AddTransient<ICategoryRepository, CategoryRepository>();
+            service.AddTransient<ICategoryApplication, CategoryApplication>();
+
             #endregion
 
             #region SiteEntities

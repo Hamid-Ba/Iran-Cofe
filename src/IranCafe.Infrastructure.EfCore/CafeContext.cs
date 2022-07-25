@@ -23,6 +23,7 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<City>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Operator>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Category>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Province>().HasQueryFilter(q => !q.IsDelete);
 
             //Seed Operator
@@ -44,6 +45,7 @@ namespace IranCafe.Infrastructure.EfCore
         #region CafeAgg
 
         public DbSet<Cafe> Cafes { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         #endregion
 
