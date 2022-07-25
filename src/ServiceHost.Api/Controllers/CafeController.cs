@@ -24,6 +24,17 @@ namespace ServiceHost.Api.Controllers
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }
         }
 
+        [HttpGet("{uniqueCode}")]
+        public async Task<IActionResult> GetBy(string uniqueCode)
+        {
+            try
+            {
+                var result = await _cafeApplication.GetBy(uniqueCode);
+                return Ok(result);
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
+
         [HttpPost("registerCafe")]
         public async Task<IActionResult> RegisterCafe([FromBody] RegisterCafeDto command)
         {

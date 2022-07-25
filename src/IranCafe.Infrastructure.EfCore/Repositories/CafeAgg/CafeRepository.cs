@@ -69,5 +69,33 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
                     }).AsNoTracking().ToListAsync();
             }
         }
+
+        public async Task<CafeDto> GetBy(string uniqueCode) => (await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.UniqueCode == uniqueCode)
+            .Select(c => new CafeDto
+            {
+                Id = c.Id,
+                UniqueCode = c.UniqueCode,
+                OwnerId = c.OwnerId,
+                ProvinceId = c.ProvinceId,
+                CityId = c.CityId,
+                FaTitle = c.FaTitle,
+                EnTitle = c.EnTitle,
+                ImageUrl = c.ImageUrl,
+                Slug = c.Slug,
+                Phone = c.Phone,
+                Desc = c.Desc,
+                Email = c.Desc,
+                GoogleMapUrl = c.GoogleMapUrl,
+                InstagramId = c.InstagramId,
+                PostalCode = c.PostalCode,
+                QRCode = c.QRCode,
+                ShortDesc = c.ShortDesc,
+                Status = c.Status,
+                Street = c.Street,
+                TelegramId = c.TelegramId,
+                Type = c.Type,
+                View = c.View
+            }).AsNoTracking().FirstOrDefaultAsync())!;
+        
     }
 }

@@ -5,6 +5,7 @@ namespace IranCafe.Application.Contract.CafeAgg.Contracts
 {
     public interface ICafeApplication
     {
+        Task<CafeDto> GetBy(string uniqueCode);
         Task<OperationResult> Edit(EditCafeDto command);
         Task<OperationResult> Register(RegisterCafeDto command);
         Task<IEnumerable<CafesDto>> GetAllBy(FilterCafesDto filter);

@@ -55,6 +55,8 @@ namespace IranCafe.Application.CafeAgg
 
         public async Task<IEnumerable<CafesDto>> GetAllBy(FilterCafesDto filter) => await _cafeRepository.GetAllBy(filter);
 
+        public async Task<CafeDto> GetBy(string uniqueCode) => await _cafeRepository.GetBy(uniqueCode);
+
         public async Task<OperationResult> Register(RegisterCafeDto command)
         {
             OperationResult result = new();
