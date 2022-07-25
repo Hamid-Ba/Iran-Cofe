@@ -53,7 +53,7 @@ namespace IranCafe.Application.CafeAgg
 
         public async Task<IEnumerable<CafeAdminDto>> GetAllBy(CafeStatus status) => await _cafeRepository.GetAllBy(status);
 
-        public async Task<IEnumerable<CafesDto>> GetAllBy(Guid provinceOrCityId, bool isCity = false) => await _cafeRepository.GetAllBy(provinceOrCityId, isCity);
+        public async Task<IEnumerable<CafesDto>> GetAllBy(FilterCafesDto filter) => await _cafeRepository.GetAllBy(filter);
 
         public async Task<OperationResult> Register(RegisterCafeDto command)
         {

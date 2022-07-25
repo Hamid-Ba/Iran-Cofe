@@ -7,8 +7,8 @@ namespace IranCafe.Application.Contract.CafeAgg.Contracts
     {
         Task<OperationResult> Edit(EditCafeDto command);
         Task<OperationResult> Register(RegisterCafeDto command);
+        Task<IEnumerable<CafesDto>> GetAllBy(FilterCafesDto filter);
         Task<IEnumerable<CafeAdminDto>> GetAllBy(CafeStatus status);
         Task<OperationResult> ChangeStatus(ChangeCafeStatusDto command);
-        Task<IEnumerable<CafesDto>> GetAllBy(Guid provinceOrCityId,bool isCity = false);
     }
 }

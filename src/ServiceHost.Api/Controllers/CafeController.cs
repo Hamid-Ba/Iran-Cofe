@@ -13,12 +13,12 @@ namespace ServiceHost.Api.Controllers
 
         public CafeController(ICafeApplication cafeApplication) => _cafeApplication = cafeApplication;
 
-        [HttpGet("{cityOrProvinceId}/{isCity}")]
-        public async Task<IActionResult> GetAllBy(Guid cityOrProvinceId , bool isCity)
+        [HttpGet]
+        public async Task<IActionResult> GetAllBy([FromQuery]FilterCafesDto filter)
         {
             try
             {
-                var result = await _cafeApplication.GetAllBy(cityOrProvinceId, isCity);
+                var result = await _cafeApplication.GetAllBy(filter);
                 return Ok(result);
             }
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }

@@ -7,6 +7,6 @@ namespace IranCafe.Domain.CafeAgg.Contracts
     public interface ICafeRepository : IRepository<Cafe>
     {
         Task<IEnumerable<CafeAdminDto>> GetAllBy(CafeStatus status);
-        Task<IEnumerable<CafesDto>> GetAllBy(Guid provinceOrCityId, bool isCity);
+        Task<IEnumerable<CafesDto>> GetAllBy(FilterCafesDto filter);
     }
 }

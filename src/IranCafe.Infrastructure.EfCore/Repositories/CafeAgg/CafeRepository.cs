@@ -34,11 +34,12 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
             return result;
         }
 
-        public async Task<IEnumerable<CafesDto>> GetAllBy(Guid provinceOrCityId, bool isCity)
+        public async Task<IEnumerable<CafesDto>> GetAllBy(FilterCafesDto filter)
         {
-            if (isCity)
+            if (filter.IsCity)
             {
-                return await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.CityId == provinceOrCityId).
+                return await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.FaTitle!.Contains(filter.FaTitle!) && c.Type == filter.Type &&
+                c.CityId == filter.ProvinceOrCityId).
                     Select(c => new CafesDto
                     {
                         Id = c.Id,
@@ -53,7 +54,8 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
             }
             else
             {
-                return await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.ProvinceId == provinceOrCityId).
+                return await _context.Cafes.Where(c => c.Status == CafeStatus.Confirmed && c.FaTitle!.Contains(filter.FaTitle!) && c.Type == filter.Type &&
+                c.ProvinceId == filter.ProvinceOrCityId).
                     Select(c => new CafesDto
                     {
                         Id = c.Id,

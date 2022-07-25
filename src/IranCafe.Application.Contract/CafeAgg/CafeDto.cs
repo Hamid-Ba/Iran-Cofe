@@ -89,6 +89,14 @@ namespace IranCafe.Application.Contract.CafeAgg
 
     }
 
+    public class FilterCafesDto
+    {
+        public string? FaTitle { get; set; }
+        public bool IsCity { get; set; }
+        public Guid ProvinceOrCityId { get; set; }
+        public CafeType Type { get; set; }
+    }
+
     public class ChangeCafeStatusDto
     {
         public Guid Id { get; set; }
