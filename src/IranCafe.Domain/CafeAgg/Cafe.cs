@@ -8,7 +8,7 @@ namespace IranCafe.Domain.CafeAgg
     public class Cafe : EntityBase
     {
         public Guid OwnerId { get; private set; }
-        public Guid ProvinceId { get;private set; }
+        public Guid ProvinceId { get; private set; }
         public Guid CityId { get; private set; }
         public string? UniqueCode { get; private set; }
         public string? QRCode { get; private set; }
@@ -31,11 +31,12 @@ namespace IranCafe.Domain.CafeAgg
         public CafeType Type { get; private set; }
 
         public City? City { get; private set; }
-        public Province? Province { get;private set; }
+        public Province? Province { get; private set; }
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get; private set; }
+        public List<Category>? Categories { get; private set; }
 
-        public Cafe(Guid ownerId,Guid provinceId, Guid cityId, CafeType type, string uniqueCode, string enTitle, string faTitle, string slug, string phone, string street
+        public Cafe(Guid ownerId, Guid provinceId, Guid cityId, CafeType type, string uniqueCode, string enTitle, string faTitle, string slug, string phone, string street
             , string shortDesc, string desc)
         {
             OwnerId = ownerId;
@@ -53,7 +54,7 @@ namespace IranCafe.Domain.CafeAgg
             View = 0;
         }
 
-        public void Edit(Guid provinceId,Guid cityId, string? enTitle, string? faTitle, string? slug,
+        public void Edit(Guid provinceId, Guid cityId, string? enTitle, string? faTitle, string? slug,
             string? phone, string? email, string? instagramId, string? telegramId, string? street, string? postalCode, string? shortDesc,
             string? desc, CafeType type)
         {
