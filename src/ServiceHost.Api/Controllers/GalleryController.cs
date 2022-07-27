@@ -50,5 +50,21 @@ namespace ServiceHost.Api.Controllers
             }
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Edit([FromForm]EditGalleryDto command)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var result = await _galleryApplication.Edit(command);
+                    return result.IsSucceeded ? Ok(result.Message) : Problem(result.Message);
+                }
+
+                return BadRequest(ApiResultMessages.ModelStateNotValid);
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
     }
 }
