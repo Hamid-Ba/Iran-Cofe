@@ -54,5 +54,7 @@ namespace IranCafe.Application.CafeAgg
         }
 
         public async Task<IEnumerable<CategoryDto>> GetAllBy() => await _categoryRepository.GetAllBy();
+
+        public async Task<EditCategoryDto> GetDetailForEditBy(Guid id) => await _categoryRepository.GetDetailForEditBy(id);
     }
 }

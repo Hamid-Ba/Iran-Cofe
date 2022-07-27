@@ -26,5 +26,14 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
             Logo = $"{_current.Request.Scheme}://{_current.Request.Host}{_current.Request.PathBase}/Pictures//{c.Logo}",
             ShortDesc = c.ShortDesc
         }).AsNoTracking().ToListAsync();
+
+        public async Task<EditCategoryDto> GetDetailForEditBy(Guid id) => (await _context.Categories.Select(c => new EditCategoryDto
+        {
+            Id = c.Id,
+            Title = c.Title,
+            Slug = c.Slug,
+            Logo = c.Logo,
+            ShortDesc = c.ShortDesc
+        }).AsNoTracking().FirstOrDefaultAsync(c => c.Id == id))!;
     }
 }

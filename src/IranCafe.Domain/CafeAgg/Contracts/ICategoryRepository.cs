@@ -6,5 +6,6 @@ namespace IranCafe.Domain.CafeAgg.Contracts
     public interface ICategoryRepository : IRepository<Category>
     {
         Task<IEnumerable<CategoryDto>> GetAllBy();
+        Task<EditCategoryDto> GetDetailForEditBy(Guid id);
     }
 }
