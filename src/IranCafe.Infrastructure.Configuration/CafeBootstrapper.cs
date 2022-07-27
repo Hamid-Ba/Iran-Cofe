@@ -21,8 +21,8 @@ using Microsoft.Extensions.DependencyInjection;
 namespace IranCafe.Infrastructure.Configuration
 {
     public static class CafeBootstrapper
-	{
-		public static void Configure(IServiceCollection service,string connectionString)
+    {
+        public static void Configure(IServiceCollection service, string connectionString)
         {
             #region Configure Context
             service.AddDbContext<CafeContext>(option => option.UseSqlServer(connectionString));
@@ -47,6 +47,9 @@ namespace IranCafe.Infrastructure.Configuration
             service.AddTransient<ICafeRepository, CafeRepository>();
             service.AddTransient<ICafeApplication, CafeApplication>();
 
+            service.AddTransient<IGalleryRepository, GalleryRepository>();
+            service.AddTransient<IGalleryApplication, GalleryApplication>();
+
             service.AddTransient<ICategoryRepository, CategoryRepository>();
             service.AddTransient<ICategoryApplication, CategoryApplication>();
 
@@ -62,5 +65,5 @@ namespace IranCafe.Infrastructure.Configuration
 
             #endregion
         }
-    } 
+    }
 }
