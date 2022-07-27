@@ -18,5 +18,16 @@ namespace IranCafe.Domain.CafeAgg
             ImageName = imageName;
             FolderPath = folderPath;
         }
+
+        public void Edit(string imageUrl,string imageName)
+        {
+            if(!string.IsNullOrWhiteSpace(imageName))
+            {
+                ImageUrl = imageUrl;
+                ImageName = imageName;
+
+                LastUpdateDate = DateTime.Now;
+            }
+        }
     }
 }
