@@ -10,12 +10,12 @@ namespace ServiceHost.Api.Controllers
         public CategoryController(ICategoryApplication categoryApplication) => _categoryApplication = categoryApplication;
 
 
-        [HttpGet("{cafeId}")]
-        public async Task<IActionResult> GetAllBy(Guid cafeId)
+        [HttpGet()]
+        public async Task<IActionResult> GetAllBy()
         {
             try
             {
-                var result = await _categoryApplication.GetAllBy(cafeId);
+                var result = await _categoryApplication.GetAllBy();
                 return Ok(result);
             }
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }

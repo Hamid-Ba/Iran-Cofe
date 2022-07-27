@@ -1,7 +1,6 @@
 ﻿using Framework.Api;
 using IranCafe.Application.Contract.CafeAgg;
 using IranCafe.Application.Contract.CafeAgg.Contracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.Api.Controllers

@@ -5,6 +5,6 @@ namespace IranCafe.Domain.CafeAgg.Contracts
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        Task<IEnumerable<CategoryDto>> GetAllBy(Guid cafeId);
+        Task<IEnumerable<CategoryDto>> GetAllBy();
     }
 }

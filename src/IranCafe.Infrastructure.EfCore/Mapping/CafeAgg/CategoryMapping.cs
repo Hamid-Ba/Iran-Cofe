@@ -13,7 +13,6 @@ namespace IranCafe.Infrastructure.EfCore.Mapping.CafeAgg
             builder.Property(p => p.Title).HasMaxLength(50).IsRequired();
             builder.Property(p => p.ShortDesc).HasMaxLength(250);
 
-            builder.HasOne(c => c.Cafe).WithMany(c => c.Categories).HasForeignKey(f => f.CafeId);
             builder.HasMany(m => m.Items).WithOne(c => c.Category).HasForeignKey(f => f.CategoryId);
         }
     }

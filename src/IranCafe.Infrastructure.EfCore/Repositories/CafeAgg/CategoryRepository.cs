@@ -12,14 +12,12 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
 
         public CategoryRepository(CafeContext context) : base(context) => _context = context;
 
-        public async Task<IEnumerable<CategoryDto>> GetAllBy(Guid cafeId) => await _context.Categories.Where(c => c.CafeId == cafeId).Select(c => new CategoryDto
+        public async Task<IEnumerable<CategoryDto>> GetAllBy() => await _context.Categories.Select(c => new CategoryDto
         {
             Id = c.Id,
-            CafeId = c.CafeId,
             Title = c.Title,
             Slug = c.Slug,
             ShortDesc = c.ShortDesc
         }).AsNoTracking().ToListAsync();
-        
     }
 }

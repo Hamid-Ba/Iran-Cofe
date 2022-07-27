@@ -16,10 +16,10 @@ namespace IranCafe.Application.CafeAgg
         {
             OperationResult result = new();
 
-            if (_categoryRepository.Exists(c => c.Title == command.Title && c.CafeId == command.CafeId))
+            if (_categoryRepository.Exists(c => c.Title == command.Title))
                 return result.Failed(ApplicationMessage.DuplicatedModel);
 
-            var category = new Category(command.CafeId, command.Title!, command.Slug!, command.ShortDesc!);
+            var category = new Category(command.Title!, command.Slug!, command.ShortDesc!);
 
             await _categoryRepository.AddEntityAsync(category);
             await _categoryRepository.SaveChangesAsync();
@@ -34,8 +34,7 @@ namespace IranCafe.Application.CafeAgg
             var category = await _categoryRepository.GetEntityByIdAsync(command.Id);
 
             if (category is null) return result.Failed(ApplicationMessage.NotExist);
-            if (category.CafeId != command.CafeId) return result.Failed(ApplicationMessage.DoNotAccessToOtherCafe);
-            if (_categoryRepository.Exists(c => c.Title == command.Title && c.CafeId == command.CafeId && c.Id != command.Id))
+            if (_categoryRepository.Exists(c => c.Title == command.Title && c.Id != command.Id))
                 return result.Failed(ApplicationMessage.DuplicatedModel);
 
             category.Edit(command.Title!, command.Slug!, command.ShortDesc!);
@@ -44,6 +43,6 @@ namespace IranCafe.Application.CafeAgg
             return result.Succeeded();
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetAllBy(Guid cafeId) => await _categoryRepository.GetAllBy(cafeId);
+        public async Task<IEnumerable<CategoryDto>> GetAllBy() => await _categoryRepository.GetAllBy();
     }
 }
