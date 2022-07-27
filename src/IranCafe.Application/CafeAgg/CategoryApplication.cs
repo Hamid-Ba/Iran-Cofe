@@ -19,7 +19,12 @@ namespace IranCafe.Application.CafeAgg
             if (_categoryRepository.Exists(c => c.Title == command.Title))
                 return result.Failed(ApplicationMessage.DuplicatedModel);
 
-            var category = new Category(command.Title!, command.Slug!, command.ShortDesc!);
+            var slug = command.Slug!.Slugify();
+
+            var folderName = $"category\\{slug}";
+            var logo = Uploader.ImageUploader(command.LogoFile!, folderName, null!);
+
+            var category = new Category(command.Title!, slug, logo, command.ShortDesc!);
 
             await _categoryRepository.AddEntityAsync(category);
             await _categoryRepository.SaveChangesAsync();
@@ -37,7 +42,12 @@ namespace IranCafe.Application.CafeAgg
             if (_categoryRepository.Exists(c => c.Title == command.Title && c.Id != command.Id))
                 return result.Failed(ApplicationMessage.DuplicatedModel);
 
-            category.Edit(command.Title!, command.Slug!, command.ShortDesc!);
+            var slug = command.Slug!.Slugify();
+
+            var folderName = $"category\\{slug}";
+            var logo = Uploader.ImageUploader(command.LogoFile!, folderName, category.Logo!);
+
+            category.Edit(command.Title!, slug, logo, command.ShortDesc!);
             await _categoryRepository.SaveChangesAsync();
 
             return result.Succeeded();
