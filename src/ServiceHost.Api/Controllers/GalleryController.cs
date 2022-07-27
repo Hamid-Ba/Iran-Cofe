@@ -1,4 +1,5 @@
-﻿using IranCafe.Application.Contract.CafeAgg.Contracts;
+﻿using Framework.Api;
+using IranCafe.Application.Contract.CafeAgg.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,5 +22,16 @@ namespace ServiceHost.Api.Controllers
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }
         }
 
+        [HttpGet("{cafeId}/{id}")]
+        public async Task<IActionResult> GetBy(Guid cafeId , Guid id)
+        {
+            try
+            {
+                var result = await _galleryApplication.GetBy(id, cafeId);
+                return result == default ? Problem(ApiResultMessages.NotFound) : Ok(result);
+                
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
     }
 }
