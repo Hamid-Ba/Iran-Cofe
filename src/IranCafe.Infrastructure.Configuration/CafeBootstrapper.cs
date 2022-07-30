@@ -53,6 +53,9 @@ namespace IranCafe.Infrastructure.Configuration
             service.AddTransient<ICategoryRepository, CategoryRepository>();
             service.AddTransient<ICategoryApplication, CategoryApplication>();
 
+            service.AddTransient<IMenuItemRepository, MenuItemRepository>();
+            service.AddTransient<IMenuItemApplication,MenuItemApplication>();
+
             #endregion
 
             #region SiteEntities

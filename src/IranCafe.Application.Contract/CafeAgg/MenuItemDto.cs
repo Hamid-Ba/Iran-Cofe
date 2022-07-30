@@ -11,5 +11,6 @@
         public double Price { get; set; }
         public string? PriceString { get; set; }
         public bool IsActive { get; set; }
+        public string? PersianCreationDate { get; set; }
     }
 }
