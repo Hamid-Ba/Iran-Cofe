@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Framework.Application;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace IranCafe.Application.Contract.CafeAgg
 {
@@ -12,9 +14,15 @@ namespace IranCafe.Application.Contract.CafeAgg
 
     public class CreateCategoryDto
     {
+        [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public string? Title { get; set; }
+
+        [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public string? Slug { get; set; }
+
+        [Required(ErrorMessage = ValidationMessage.IsRequired)]
         public IFormFile? LogoFile { get; set; }
+
         public string? ShortDesc { get; set; }
     }
 

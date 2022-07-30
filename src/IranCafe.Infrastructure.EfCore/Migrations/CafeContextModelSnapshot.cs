@@ -94,6 +94,10 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                     b.Property<string>("GoogleMapUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("InstagramId")
                         .HasColumnType("nvarchar(max)");
 
@@ -113,6 +117,9 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
 
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProvinceId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("QRCode")
                         .HasColumnType("nvarchar(max)");
@@ -156,6 +163,8 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
 
                     b.HasIndex("CityId");
 
+                    b.HasIndex("ProvinceId");
+
                     b.ToTable("Cafes");
                 });
 
@@ -177,18 +186,67 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Logo")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("ShortDesc")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Slug")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("IranCafe.Domain.CafeAgg.Gallery", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CafeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FolderPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CafeId");
+
+                    b.ToTable("Galleries");
                 });
 
             modelBuilder.Entity("IranCafe.Domain.CafeAgg.MenuItem", b =>
@@ -209,8 +267,14 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                     b.Property<DateTime>("DeletionDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Desc")
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
+
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -225,10 +289,14 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("ShortDesc")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -236,7 +304,7 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("MenuItem");
+                    b.ToTable("MenuItems");
                 });
 
             modelBuilder.Entity("IranCafe.Domain.SiteEntities.City", b =>
@@ -261,11 +329,43 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProvinceId");
+
                     b.ToTable("City");
+                });
+
+            modelBuilder.Entity("IranCafe.Domain.SiteEntities.Province", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(85)
+                        .HasColumnType("nvarchar(85)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Provinces");
                 });
 
             modelBuilder.Entity("IranCafe.Domain.UserAgg.User", b =>
@@ -322,12 +422,31 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
             modelBuilder.Entity("IranCafe.Domain.CafeAgg.Cafe", b =>
                 {
                     b.HasOne("IranCafe.Domain.SiteEntities.City", "City")
-                        .WithMany()
+                        .WithMany("Cafe")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("IranCafe.Domain.SiteEntities.Province", "Province")
+                        .WithMany()
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("City");
+
+                    b.Navigation("Province");
+                });
+
+            modelBuilder.Entity("IranCafe.Domain.CafeAgg.Gallery", b =>
+                {
+                    b.HasOne("IranCafe.Domain.CafeAgg.Cafe", "Cafe")
+                        .WithMany("Galleries")
+                        .HasForeignKey("CafeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cafe");
                 });
 
             modelBuilder.Entity("IranCafe.Domain.CafeAgg.MenuItem", b =>
@@ -335,13 +454,13 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                     b.HasOne("IranCafe.Domain.CafeAgg.Cafe", "Cafe")
                         .WithMany("Items")
                         .HasForeignKey("CafeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("IranCafe.Domain.CafeAgg.Category", "Category")
                         .WithMany("Items")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Cafe");
@@ -349,12 +468,23 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("IranCafe.Domain.SiteEntities.City", b =>
+                {
+                    b.HasOne("IranCafe.Domain.SiteEntities.Province", "Province")
+                        .WithMany("Cities")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Province");
+                });
+
             modelBuilder.Entity("IranCafe.Domain.UserAgg.User", b =>
                 {
                     b.HasOne("IranCafe.Domain.CafeAgg.Cafe", "Cafe")
                         .WithMany("Users")
                         .HasForeignKey("CafeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Cafe");
@@ -362,6 +492,8 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
 
             modelBuilder.Entity("IranCafe.Domain.CafeAgg.Cafe", b =>
                 {
+                    b.Navigation("Galleries");
+
                     b.Navigation("Items");
 
                     b.Navigation("Users");
@@ -370,6 +502,16 @@ namespace IranCafe.Infrastructure.EfCore.Migrations
             modelBuilder.Entity("IranCafe.Domain.CafeAgg.Category", b =>
                 {
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("IranCafe.Domain.SiteEntities.City", b =>
+                {
+                    b.Navigation("Cafe");
+                });
+
+            modelBuilder.Entity("IranCafe.Domain.SiteEntities.Province", b =>
+                {
+                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }
