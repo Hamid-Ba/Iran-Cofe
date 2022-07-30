@@ -79,16 +79,16 @@
                                             <td>
                                                 @if (entity.IsActive)
                                                 {
-                                                <i class="btn btn-success md md-check"></i>
+                                                    <span class="text text-success"><i class="fa fa-check"></i></span>
                                                 }
                                                 else
                                                 {
-                                                <i class="btn btn-danger fa fa-close"></i>
+                                                   <span class="text text-danger"><i class=" fa fa-close"></i></span> 
                                                 }
                                             </td>
                                         }
 
-                                        <td style="text-align: center;">
+                                        <td style="text-align: right;">
 
                                             @if (entity.IsActive)
                                             {
@@ -113,7 +113,7 @@
 
                                             <a class="btn btn-primary pull-right m-rl-5"
                                            href="#showmodal=@Url.Action("SendMessage", "User", new {id = entity.Id})">
-                                                <i class="fa fa-message"></i>
+                                                <i class="fa fa-envelope-o"></i>
                                             </a>
                                         </td>
                                     </tr>
