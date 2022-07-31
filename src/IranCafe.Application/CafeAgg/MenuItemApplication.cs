@@ -11,6 +11,8 @@ namespace IranCafe.Application.CafeAgg
         public MenuItemApplication(IMenuItemRepository menuItemRepository) => _menuItemRepository = menuItemRepository;
 
         public async Task<IEnumerable<MenuItemDto>> GetAllBy(Guid cafeId, Guid? categoryId) => await _menuItemRepository.GetAllBy(cafeId, categoryId);
+
+        public async Task<DetailMenuItemDto> GetDetailBy(Guid id) => await _menuItemRepository.GetDetailBy(id);
         
     }
 }

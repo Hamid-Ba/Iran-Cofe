@@ -19,5 +19,16 @@ namespace ServiceHost.Api.Controllers
             }
             catch (Exception e) { return BadRequest(e.InnerException!.Message); }
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetDetailBy(Guid id)
+        {
+            try
+            {
+                var result = await _menuItemApplication.GetDetailBy(id);
+                return Ok(result);
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
     }
 }

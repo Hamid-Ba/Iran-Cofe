@@ -13,4 +13,11 @@
         public bool IsActive { get; set; }
         public string? PersianCreationDate { get; set; }
     }
+
+    public class DetailMenuItemDto
+    {
+        public Guid Id { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? Desc { get; set; }
+    }
 }

@@ -4,11 +4,6 @@ using IranCafe.Application.Contract.CafeAgg;
 using IranCafe.Domain.CafeAgg;
 using IranCafe.Domain.CafeAgg.Contracts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
 {
@@ -20,7 +15,7 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
 
         public async Task<IEnumerable<MenuItemDto>> GetAllBy(Guid cafeId, Guid? categoryId)
         {
-            if(categoryId is null)
+            if (categoryId is null)
             {
                 var items = await _context.MenuItems.Where(c => c.CafeId == cafeId && c.IsActive).Select(c => new MenuItemDto
                 {
@@ -53,6 +48,12 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.CafeAgg
 
             return result;
         }
-        
+
+        public async Task<DetailMenuItemDto> GetDetailBy(Guid id) => (await _context.MenuItems.Select(m => new DetailMenuItemDto
+        {
+            Id = m.Id,
+            ImageUrl = m.ImageUrl,
+            Desc = m.Desc
+        }).AsNoTracking().FirstOrDefaultAsync(m => m.Id == id))!;
     }
 }
