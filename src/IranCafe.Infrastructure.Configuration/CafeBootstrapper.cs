@@ -60,6 +60,9 @@ namespace IranCafe.Infrastructure.Configuration
             service.AddTransient<IMenuItemRepository, MenuItemRepository>();
             service.AddTransient<IMenuItemApplication,MenuItemApplication>();
 
+            service.AddTransient<IReservationRepository, ReservationRepository>();
+            service.AddTransient<IReservationApplication, ReservationApplication>();
+
             #endregion
 
             #region Subscriptions

@@ -16,6 +16,7 @@ namespace IranCafe.Application.Contract.CafeAgg
         public string? ReserveHourStr { get; set; }
         public DateTime ReserveDate { get; set; }
         public string? Message { get; set; }
+        public string? PersianCreationDate { get; set; }
     }
 
     public class ReserveDto

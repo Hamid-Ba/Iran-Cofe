@@ -29,6 +29,7 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.Entity<Category>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Province>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<MenuItem>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Reservation>().HasQueryFilter(q => !q.IsDelete);
 
             //Seed Operator
             //modelBuilder.Entity<Operator>().HasData(new Operator("حمید بلال زاده", "09151498722", hashpassword););
@@ -49,8 +50,9 @@ namespace IranCafe.Infrastructure.EfCore
         #region CafeAgg
         public DbSet<Cafe> Cafes { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         #endregion
 

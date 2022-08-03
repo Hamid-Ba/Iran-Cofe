@@ -35,6 +35,7 @@ namespace IranCafe.Domain.CafeAgg
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get; private set; }
         public List<Gallery>? Galleries { get; private set; }
+        public List<Reservation>? Reservations { get; private set; }
 
         public Cafe(Guid ownerId, Guid provinceId, Guid cityId, CafeType type, string uniqueCode, string enTitle, string faTitle, string slug, string phone, string street
             , string shortDesc, string desc)
