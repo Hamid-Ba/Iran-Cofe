@@ -2,17 +2,21 @@
 using IranCafe.Application.CafeAgg;
 using IranCafe.Application.Contract.AccountAgg.Contracts;
 using IranCafe.Application.Contract.CafeAgg.Contracts;
+using IranCafe.Application.Contract.PlanAgg.Contracts;
 using IranCafe.Application.Contract.SiteEntities.Contracts;
 using IranCafe.Application.Contract.UserAgg.Contracts;
+using IranCafe.Application.PlanAgg;
 using IranCafe.Application.SiteEntities;
 using IranCafe.Application.UserAgg;
 using IranCafe.Domain.AccountAgg.Contracts;
 using IranCafe.Domain.CafeAgg.Contracts;
+using IranCafe.Domain.PlanAgg.Contracts;
 using IranCafe.Domain.SiteEntities.Contracts;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore;
 using IranCafe.Infrastructure.EfCore.Repositories.AccountAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.CafeAgg;
+using IranCafe.Infrastructure.EfCore.Repositories.PlanAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.SiteEntities;
 using IranCafe.Infrastructure.EfCore.Repositories.UserAgg;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +59,13 @@ namespace IranCafe.Infrastructure.Configuration
 
             service.AddTransient<IMenuItemRepository, MenuItemRepository>();
             service.AddTransient<IMenuItemApplication,MenuItemApplication>();
+
+            #endregion
+
+            #region Subscriptions
+
+            service.AddTransient<IPlanRepository, PlanRepository>();
+            service.AddTransient<IPlanApplication, PlanApplication>();
 
             #endregion
 

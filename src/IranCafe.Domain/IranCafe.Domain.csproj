@@ -19,9 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserAgg\" />
-    <Folder Include="CafeAgg\" />
     <Folder Include="SiteEntities\" />
-    <Folder Include="CafeAgg\Contracts\" />
     <Folder Include="SiteEntities\Contracts\" />
     <Folder Include="PlanAgg\" />
     <Folder Include="PlanAgg\Contracts\" />

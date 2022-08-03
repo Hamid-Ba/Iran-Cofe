@@ -1,5 +1,6 @@
 ﻿using IranCafe.Domain.AccountAgg;
 using IranCafe.Domain.CafeAgg;
+using IranCafe.Domain.PlanAgg;
 using IranCafe.Domain.SiteEntities;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore.Mapping.UserAgg;
@@ -20,6 +21,7 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.ApplyConfigurationsFromAssembly(assembly);
 
             modelBuilder.Entity<User>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Plan>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<City>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Gallery>().HasQueryFilter(q => !q.IsDelete);
@@ -45,11 +47,16 @@ namespace IranCafe.Infrastructure.EfCore
         #endregion
 
         #region CafeAgg
-
         public DbSet<Cafe> Cafes { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
+
+        #endregion
+
+        #region Plan
+
+        public DbSet<Plan> Plans { get; set; }
 
         #endregion
 
