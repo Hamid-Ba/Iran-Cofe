@@ -11,10 +11,11 @@ namespace IranCafe.Domain.UserAgg
         public string? FullName { get; private set; }
         public string? Email { get; private set; }
         public bool IsActive { get; private set; }
+        public string? AccessToken { get; private set; }
         public DateTime? LoginExpireDate { get; private set; }
 
         public Cafe? Cafe { get; private set; }
-        public List<Reservation>? Reservations { get; set; }
+        public List<Reservation>? Reservations { get; private set; }
 
         public User() { }
 
@@ -53,6 +54,7 @@ namespace IranCafe.Domain.UserAgg
             return CafeId;
         }
 
+        public void SetAccessToken(string token) => AccessToken = token;
         public void SetAccessToLoginDate(DateTime accessTime) => LoginExpireDate = accessTime;
 
         public void ChangePhoneCode(string newPhoneCode) => PhoneCode = newPhoneCode;

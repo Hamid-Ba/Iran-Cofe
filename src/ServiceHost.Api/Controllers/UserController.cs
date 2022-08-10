@@ -13,6 +13,17 @@ namespace ServiceHost.Api.Controllers
 
         public UserController(IUserApplication userApplication) => _userApplication = userApplication;
 
+        [HttpGet("{token}")]
+        public async Task<IActionResult> GetBy(string token)
+        {
+            try
+            {
+                var result = await _userApplication.GetBy(token);
+                return Ok(result);
+            }
+            catch (Exception e) { return BadRequest(e.InnerException!.Message); }
+        }
+
         [HttpPut]
         public async Task<IActionResult> Edit(EditUserDto command)
         {

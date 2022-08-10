@@ -6,6 +6,7 @@ namespace IranCafe.Application.Contract.UserAgg.Contracts
     {
         Task<UserDto> GetBy(Guid id);
         Task<OperationResult> Delete(Guid id);
+        Task<UserDto> GetBy(string accessToken);
         Task<EditUserDto> GetDetailForEditBy(Guid id);
         Task<OperationResult> ActiveOrDeactive(Guid id);
         Task<OperationResult> Edit(EditUserDto command);

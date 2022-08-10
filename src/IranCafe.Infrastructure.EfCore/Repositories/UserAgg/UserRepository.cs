@@ -32,6 +32,15 @@ namespace IranCafe.Infrastructure.EfCore.Repositories.UserAgg
             PersianCreationDate = u.CreationDate.ToFarsi()
         }).AsNoTracking().FirstOrDefaultAsync(u => u.Id == id))!;
 
+        public async Task<UserDto> GetByToken(string accessToken) => (await _context.Users.Where(u => u.AccessToken == accessToken).IgnoreQueryFilters().Select(u => new UserDto
+        {
+            Id = u.Id,
+            FullName = u.FullName,
+            Phone = u.Phone,
+            Email = u.Email,
+            PersianCreationDate = u.CreationDate.ToFarsi()
+        }).AsNoTracking().FirstOrDefaultAsync())!;
+
         public async Task<EditUserDto> GetDetailForEditBy(Guid id) => (await _context.Users.Select(u => new EditUserDto
         {
             Id = u.Id,

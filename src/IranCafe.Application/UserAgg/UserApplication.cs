@@ -66,6 +66,8 @@ namespace IranCafe.Application.UserAgg
 
         public async Task<UserDto> GetBy(Guid id) => await _userRepository.GetBy(id);
 
+        public async Task<UserDto> GetBy(string accessToken) => await _userRepository.GetByToken(accessToken);
+
         public async Task<EditUserDto> GetDetailForEditBy(Guid id) => await _userRepository.GetDetailForEditBy(id);
 
         public async Task<OperationResult> LoginFirstStep(LoginUserDto command)
