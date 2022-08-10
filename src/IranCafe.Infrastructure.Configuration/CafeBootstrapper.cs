@@ -74,11 +74,14 @@ namespace IranCafe.Infrastructure.Configuration
 
             #region SiteEntities
 
-            service.AddTransient<IProvinceRepository, ProvinceRepository>();
-            service.AddTransient<IProvinceApplication, ProvinceApplication>();
-
             service.AddTransient<ICityRepository, CityRepository>();
             service.AddTransient<ICityApplication, CityApplication>();
+
+            service.AddTransient<ISettingRepository, SettingRepository>();
+            service.AddTransient<ISettingApplication, SettingApplication>();
+
+            service.AddTransient<IProvinceRepository, ProvinceRepository>();
+            service.AddTransient<IProvinceApplication, ProvinceApplication>();
 
             #endregion
         }

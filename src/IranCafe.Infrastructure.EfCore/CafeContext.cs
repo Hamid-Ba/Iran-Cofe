@@ -65,6 +65,7 @@ namespace IranCafe.Infrastructure.EfCore
         #region SiteEntities
 
         public DbSet<City> City { get; set; }
+        public DbSet<Setting> Settings { get; set; }
         public DbSet<Province> Provinces { get; set; }
 
         #endregion
