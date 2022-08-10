@@ -135,7 +135,6 @@ namespace IranCafe.Application.UserAgg
 
             var phoneCode = new Random().Next(100000, 999999).ToString();//Guid.NewGuid().ToString().Substring(0, 6);
             user.ChangePhoneCode(phoneCode);
-            await _userRepository.SaveChangesAsync();
 
             var loginDto = new JwtDto
             {
@@ -146,6 +145,10 @@ namespace IranCafe.Application.UserAgg
             };
 
             var token = _jwtHelper.SignIn(loginDto);
+
+            user.SetAccessToken(token);
+            await _userRepository.SaveChangesAsync();
+
             return (result.Succeeded(), token);
         }
 
