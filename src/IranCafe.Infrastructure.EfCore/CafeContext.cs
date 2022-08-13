@@ -1,5 +1,6 @@
 ﻿using IranCafe.Domain.AccountAgg;
 using IranCafe.Domain.CafeAgg;
+using IranCafe.Domain.EventAgg;
 using IranCafe.Domain.PlanAgg;
 using IranCafe.Domain.SiteEntities;
 using IranCafe.Domain.UserAgg;
@@ -30,6 +31,7 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.Entity<Province>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<MenuItem>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Reservation>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<CustomerClub>().HasQueryFilter(q => !q.IsDelete);
 
             //Seed Operator
             //modelBuilder.Entity<Operator>().HasData(new Operator("حمید بلال زاده", "09151498722", hashpassword););
@@ -53,6 +55,13 @@ namespace IranCafe.Infrastructure.EfCore
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+
+        #endregion
+
+        #region EvengAgg
+
+        public DbSet<CustomerClub> Clubs { get; set; }
+        public DbSet<CustomerClubUsers> CustomerClubUsers { get; set; }
 
         #endregion
 

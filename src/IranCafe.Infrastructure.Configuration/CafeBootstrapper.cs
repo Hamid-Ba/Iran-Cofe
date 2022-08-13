@@ -10,12 +10,14 @@ using IranCafe.Application.SiteEntities;
 using IranCafe.Application.UserAgg;
 using IranCafe.Domain.AccountAgg.Contracts;
 using IranCafe.Domain.CafeAgg.Contracts;
+using IranCafe.Domain.EventAgg.Contracts;
 using IranCafe.Domain.PlanAgg.Contracts;
 using IranCafe.Domain.SiteEntities.Contracts;
 using IranCafe.Domain.UserAgg;
 using IranCafe.Infrastructure.EfCore;
 using IranCafe.Infrastructure.EfCore.Repositories.AccountAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.CafeAgg;
+using IranCafe.Infrastructure.EfCore.Repositories.EventAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.PlanAgg;
 using IranCafe.Infrastructure.EfCore.Repositories.SiteEntities;
 using IranCafe.Infrastructure.EfCore.Repositories.UserAgg;
@@ -58,10 +60,17 @@ namespace IranCafe.Infrastructure.Configuration
             service.AddTransient<ICategoryApplication, CategoryApplication>();
 
             service.AddTransient<IMenuItemRepository, MenuItemRepository>();
-            service.AddTransient<IMenuItemApplication,MenuItemApplication>();
+            service.AddTransient<IMenuItemApplication, MenuItemApplication>();
 
             service.AddTransient<IReservationRepository, ReservationRepository>();
             service.AddTransient<IReservationApplication, ReservationApplication>();
+
+            #endregion
+
+            #region Event
+
+            service.AddTransient<ICustomerClubRepository, CustomerClubRepository>();
+            service.AddTransient<ICustomerClubUsersRepository, CustomerClubUsersRepository>();
 
             #endregion
 

@@ -1,5 +1,6 @@
 ﻿using Framework.Domain;
 using Framework.Domain.Cafe;
+using IranCafe.Domain.EventAgg;
 using IranCafe.Domain.SiteEntities;
 using IranCafe.Domain.UserAgg;
 
@@ -7,6 +8,7 @@ namespace IranCafe.Domain.CafeAgg
 {
     public class Cafe : EntityBase
     {
+        public Guid ClubId { get; private set; }
         public Guid OwnerId { get; private set; }
         public Guid ProvinceId { get; private set; }
         public Guid CityId { get; private set; }
@@ -31,6 +33,7 @@ namespace IranCafe.Domain.CafeAgg
         public CafeType Type { get; private set; }
 
         public City? City { get; private set; }
+        public CustomerClub Club { get; private set; }
         public Province? Province { get; private set; }
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get; private set; }
@@ -89,6 +92,8 @@ namespace IranCafe.Domain.CafeAgg
 
             LastUpdateDate = DateTime.Now;
         }
+
+        public void SetClub(Guid clubId) => ClubId = clubId;
 
         public void AddView() => View++;
     }

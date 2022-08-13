@@ -1,5 +1,6 @@
 ﻿using Framework.Domain;
 using IranCafe.Domain.CafeAgg;
+using IranCafe.Domain.EventAgg;
 
 namespace IranCafe.Domain.UserAgg
 {
@@ -15,6 +16,7 @@ namespace IranCafe.Domain.UserAgg
         public DateTime? LoginExpireDate { get; private set; }
 
         public Cafe? Cafe { get; private set; }
+        public List<CustomerClubUsers>? Clubs { get; private set; }
         public List<Reservation>? Reservations { get; private set; }
 
         public User() { }

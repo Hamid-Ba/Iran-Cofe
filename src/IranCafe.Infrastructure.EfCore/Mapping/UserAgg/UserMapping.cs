@@ -17,6 +17,10 @@ namespace IranCafe.Infrastructure.EfCore.Mapping.UserAgg
             builder.HasOne(c => c.Cafe)
                 .WithMany(u => u.Users)
                 .HasForeignKey(f => f.CafeId);
+
+            builder.HasMany(c => c.Clubs)
+                .WithOne(c => c.User)
+                .HasForeignKey(f => f.CustomerClubId);
         }
     }
 }
