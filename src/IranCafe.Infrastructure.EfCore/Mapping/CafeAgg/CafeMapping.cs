@@ -1,5 +1,6 @@
 ﻿using System;
 using IranCafe.Domain.CafeAgg;
+using IranCafe.Domain.EventAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -23,6 +24,8 @@ namespace IranCafe.Infrastructure.EfCore.Mapping.CafeAgg
             builder.HasMany(u => u.Users)
                 .WithOne(c => c.Cafe)
                 .HasForeignKey(f => f.CafeId);
+
+            builder.HasOne(c => c.Club).WithOne(c => c.Cafe).HasForeignKey<CustomerClub>(f => f.Id);
         }
     }
 }

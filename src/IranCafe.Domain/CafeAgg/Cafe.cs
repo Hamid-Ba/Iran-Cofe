@@ -33,7 +33,7 @@ namespace IranCafe.Domain.CafeAgg
         public CafeType Type { get; private set; }
 
         public City? City { get; private set; }
-        public CustomerClub Club { get; private set; }
+        public CustomerClub? Club { get; private set; }
         public Province? Province { get; private set; }
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get; private set; }
