@@ -1,4 +1,5 @@
 ﻿using IranCafe.Domain.AccountAgg;
+using IranCafe.Domain.BlogAgg;
 using IranCafe.Domain.CafeAgg;
 using IranCafe.Domain.EventAgg;
 using IranCafe.Domain.PlanAgg;
@@ -25,6 +26,7 @@ namespace IranCafe.Infrastructure.EfCore
             modelBuilder.Entity<Plan>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Cafe>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<City>().HasQueryFilter(q => !q.IsDelete);
+            modelBuilder.Entity<Article>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Gallery>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Operator>().HasQueryFilter(q => !q.IsDelete);
             modelBuilder.Entity<Category>().HasQueryFilter(q => !q.IsDelete);
@@ -46,6 +48,12 @@ namespace IranCafe.Infrastructure.EfCore
         #region UserAgg
 
         public DbSet<User> Users { get; set; }
+
+        #endregion
+
+        #region BlogAgg
+
+        public DbSet<Article> Articles { get; set; }
 
         #endregion
 

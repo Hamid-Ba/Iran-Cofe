@@ -30,6 +30,5 @@
     <Folder Include="Api\" />
     <Folder Include="Api\Jwt\" />
     <Folder Include="Application\Sms\" />
-    <Folder Include="Domain\Cafe\" />
   </ItemGroup>
 </Project>

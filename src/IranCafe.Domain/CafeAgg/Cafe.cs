@@ -1,5 +1,6 @@
 ﻿using Framework.Domain;
 using Framework.Domain.Cafe;
+using IranCafe.Domain.BlogAgg;
 using IranCafe.Domain.EventAgg;
 using IranCafe.Domain.SiteEntities;
 using IranCafe.Domain.UserAgg;
@@ -37,6 +38,7 @@ namespace IranCafe.Domain.CafeAgg
         public Province? Province { get; private set; }
         public List<User>? Users { get; private set; }
         public List<MenuItem>? Items { get; private set; }
+        public List<Article>? Articles { get; private set; }
         public List<Gallery>? Galleries { get; private set; }
         public List<Reservation>? Reservations { get; private set; }
 
